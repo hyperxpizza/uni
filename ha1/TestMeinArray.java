@@ -1,4 +1,7 @@
+package ha2;
+
 import static org.junit.Assert.*;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -12,7 +15,7 @@ class TestMeinArray {
 
     
     @Test
-    public void testIstGleichNormallfall(){
+    public void testIstGleich1(){
         float[] array1  = {1.0f, 2.0f, 3.0f};
         float[] array2 = {1.0f, 2.0f, 4.0f};
 
@@ -20,7 +23,7 @@ class TestMeinArray {
     }
     
     @Test
-    public void testIstGleichWorstCase(){
+    public void testIstGleich2(){
     	float[] array1  = {1.0f, 2.0f, 3.0f};
         float[] array2 = {1.0f, 2.0f};
         assertTrue(ma.istGleich(array1, array2) == false);
@@ -28,7 +31,7 @@ class TestMeinArray {
 
 
     @Test 
-    public void testIstGleichBestCase(){
+    public void testIstGleich3(){
     
         // two same float arrays (best case)
         float[] array1 = {1.0f, 2.0f, 3.0f};
@@ -39,7 +42,15 @@ class TestMeinArray {
     }
     
     @Test
-    public void testsucheElemBestCase() {
+    public void testIstGleich4() {
+    	float[] array1 = {1.0f, 2.0f, 3.0f};
+    	float[] array2 = {};
+    	
+    	assertTrue(ma.istGleich(array1, array2) == false);
+    }
+    
+    @Test
+    public void testSucheElem1() {
     	double[] array = {1.0, 2.0, 3.0, 4.0};
     	double elem = 4.0;
     	
@@ -47,7 +58,7 @@ class TestMeinArray {
     }
     
     @Test
-    public void testsucheElemGrenzCase() {
+    public void testSucheElem2() {
     	double[] array = {1.0, 2.0, 3.0, 4.0};
     	double elem = 5.0;
     	
@@ -55,11 +66,19 @@ class TestMeinArray {
     }
     
     @Test
-    public void testsucheElemNotSorted() {
+    public void testSucheElem3() {
     	double[] array = {2.1, 3.0, 4.0, 6.9, 3.0, 2.2, 4.1, 6.0, 5.3, 3.1, 6.6};
     	double elem = 2.1;
     	
     	assertTrue(ma.sucheElem(elem, array) == 0);
+    }
+    
+    @Test
+    public void testSucheElem4() {
+    	double[] array = {2.1, 3.0, 4.0, 6.9, 3.0, 2.2, 4.1, 6.0, 5.3, 3.1, 6.6};
+    	double elem = 9.9;
+    	
+    	assertTrue(ma.sucheElem(elem, array) == -1);
     }
     
 
