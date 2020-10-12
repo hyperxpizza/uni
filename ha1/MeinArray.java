@@ -51,6 +51,8 @@ class MeinArray{
         }
     }
 
+
+    /*
     public int[] einfuegeSortiert(int[] arr, int elem){
         // Sort array
         for(int i = 0; i<arr.length; i++){
@@ -72,10 +74,13 @@ class MeinArray{
             }
         }
 
-        // Insert into the array
-        return arr;
+        // init new array
+        int[] newArray = new int[arr.length + 1];
+        for(int i=0; i< newArray.length; i++){
+            if
+        }        
 
-       
     }
+    */
 
 }
