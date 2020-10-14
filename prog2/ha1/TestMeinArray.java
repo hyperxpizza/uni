@@ -1,8 +1,9 @@
+
 import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-class TestMeinArray {
+public class TestMeinArray {
     private MeinArray ma;
 
     @Before
@@ -78,5 +79,40 @@ class TestMeinArray {
     	assertTrue(ma.sucheElem(elem, array) == -1);
     }
     
+    @Test
+    public void testEinfuegeSortiert1() {
+    	// array already sorted, element in array
+        int[] array = {1, 2, 3, 4};
+        int elem = 4;
+        
+        assertTrue(ma.einfuegeSortiert(array, elem) == array);
+    }
+
+    
+    @Test
+    public void testEinfuegeSortiert2() {
+    	int[] array = {1, 2, 3, 4, 5};
+    	int[] array2 = {1, 2, 3, 4, 5, 9};
+    	int elem = 9;
+    	
+    	assertTrue(ma.einfuegeSortiert(array, elem) == array2);
+    }
+    
+    
+    @Test
+    public void testEinfuegeSortiert3() {
+    	int[] array = {3,5,1,8};
+    	int elem = 3;
+    	int[] expected = {1,3,5,8};
+    	
+    	assertEquals(ma.einfuegeSortiert(array, elem), expected);
+    }
+    
+    /*
+    @Test
+    public void testEinfuegeSortiert4() {
+    	int[] array = {};
+    }
+    */
 
 }

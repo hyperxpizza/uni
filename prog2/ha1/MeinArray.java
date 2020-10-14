@@ -1,5 +1,5 @@
 
-class MeinArray{
+public class MeinArray{
 
     public boolean istGleich(float a1[], float a2[]){
         if(a1.length != a2.length){
@@ -50,11 +50,43 @@ class MeinArray{
             System.out.print(arr[i] + " ");
         }
     }
-
-
     
     public int[] einfuegeSortiert(int[] arr, int elem){
-        // Sort array
+    	//sort
+    	sortArray(arr);
+    	for(int i=0; i<arr.length;i++) {
+    		System.out.println(arr[i]);
+    	}
+    	
+    	// check if element already in array
+    	for(int i=0; i<arr.length; i++) {
+    		if(arr[i] == elem) {
+    			System.out.println("Element already in array");
+    			return arr;
+    		}
+    	}
+    	
+    	System.out.println("Element not in array");
+    	
+    	// if not in array
+    	int[] newArray = new int[arr.length +1];
+    	for(int i=0; i<arr.length;i++) {
+    		newArray[i] = arr[i];
+    	}
+    	
+    	newArray[arr.length] = elem;
+    	
+    	sortArray(newArray);
+    	for(int i=0;i<newArray.length;i++){
+            System.out.println(newArray[i]);
+        }
+    	
+    	return newArray;
+    
+    }
+    
+    public static void sortArray(int[] arr) {
+    	// sort the array
         for(int i = 0; i<arr.length; i++){
             for(int j = 0; j< arr.length - i -1; j++){
                 if (arr[j] > arr[j+1]){
@@ -64,19 +96,8 @@ class MeinArray{
                 }
             }
         }
-
-        // Check if element is already there
-        for(int i = 0; i <arr.length; i++){
-            if(arr[i] == elem){
-                // Print out that the element is already there and return
-                System.out.println("Element already in the array!");
-                return arr;
-            }
-        }
-
-        return arr;
-
+        
     }
     
-
+   
 }
