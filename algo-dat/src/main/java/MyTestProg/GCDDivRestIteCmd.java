@@ -8,4 +8,15 @@ public class GCDDivRestIteCmd implements ICommand{
     public String toString(){
         
     }
+
+    public int euclidDivisionRestIterative(int a, int b){
+        do {
+            int h = a % b;
+            a = b;
+            b = h;
+
+        }while(b !=0);   
+    
+        return a;
+    }
 }

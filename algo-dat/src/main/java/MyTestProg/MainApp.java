@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class MeinApp{
 
     LinkedList<ICommand> commands;
-    CommandFactory cmdFactory;
+    CommandFactory cmdFactory = new CommandFactory();
 
     public static void printMenu(){
         System.out.print("Console-Application: Exercise-1 \t\t Wojciech Maximilan Frackowski 0576278\n\n");
@@ -32,11 +32,28 @@ public class MeinApp{
             int x = input.hasNextInt();
             switch (x) {
                 case 0:
-                    System.exit(0);
+                    running = false;
                     break;
                 case 1:
-                    
+                    cmdFactory
+                    break;
+                case 2:
+                    cmdFactory
+                    break;
+                case 3:
+                    cmdFactory
+                    break;
+                case 4:
+                    cmdFactory
+                    break;
+                case 5:
+                    cmdFactory
+                    break;
+                case 6:
+                    Console c = new Cosnole();
+                    c.
                 default:
+                    System.out.println("Wrong input! Try Again!");
                     break;
             }
         }
