@@ -88,31 +88,28 @@ public class TestMeinArray {
         assertTrue(ma.einfuegeSortiert(array, elem) == array);
     }
 
-    
     @Test
-    public void testEinfuegeSortiert2() {
-    	int[] array = {1, 2, 3, 4, 5};
-    	int[] array2 = {1, 2, 3, 4, 5, 9};
-    	int elem = 9;
-    	
-    	assertTrue(ma.einfuegeSortiert(array, elem) == array2);
+    public void einfuegeSortiertMitNegativenElement() { 
+        int[] a1 = {2, 3, 4, 5, 6};
+        Assert.assertArrayEquals(new int[]{-2, 2, 3, 4, 5, 6}, meinArray.einfuegeSortiert(a1, -2));
     }
-    
-    
+
     @Test
-    public void testEinfuegeSortiert3() {
-    	int[] array = {3,5,1,8};
-    	int elem = 3;
-    	int[] expected = {1,3,5,8};
-    	
-    	assertEquals(ma.einfuegeSortiert(array, elem), expected);
+    public void einfuegeSortiertFuegtElementInSortiertemArrayEin() {
+        int[] a1 = {2, 3, 4, 5, 6};
+        Assert.assertArrayEquals(new int[]{1, 2, 3, 4, 5, 6}, meinArray.einfuegeSortiert(a1, 1));
     }
-    
-    /*
     @Test
-    public void testEinfuegeSortiert4() {
-    	int[] array = {};
+    public void einfuegeSortiertFuegeMaxEin() { //Grenzfall mit max int value
+        int[] a1 = {2, 3, 4, 5, 6};
+        int a = Integer.MAX_VALUE;
+        Assert.assertArrayEquals(new int[]{2, 3, 4, 5, 6, a}, meinArray.einfuegeSortiert(a1, a));
     }
-    */
+    @Test
+    public void einfuegeSortiertFuegeMinEin() { //Grenzfall mit miin int value
+        int[] a1 = {2, 3, 4, 5, 6};
+        int a = Integer.MIN_VALUE;
+        Assert.assertArrayEquals(new int[]{a,2, 3, 4, 5, 6}, meinArray.einfuegeSortiert(a1, a));
+    }
 
 }
