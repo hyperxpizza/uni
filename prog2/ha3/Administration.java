@@ -13,11 +13,8 @@ public class Administration {
         return count;
     }
 
-    public Person[] createList(Person... persons){
-        Person[] personArray= new Person[persons.length];
 
-        return personArray;
-    }
+    
 
     /*
     public static java.lang.String outputList(Person[] list) throws java.lang.NullPointerException {
