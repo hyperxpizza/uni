@@ -1,10 +1,12 @@
+import java.util.ArrayList;
+
 public class Administration {
  
     public static int countFemale(Person[] list){
-        int count;
+        int count = 0;
         for(int i=0; i<list.length; i++){
-            if(list[i].geschlecht = 'f'){
-                count++
+            if(list[i].getGeschlecht() == 'f'){
+                count++;
             }
         }
 
@@ -12,9 +14,12 @@ public class Administration {
     }
 
     public Person[] createList(Person... persons){
-        
+        Person[] personArray= new Person[persons.length];
+
+        return personArray;
     }
 
+    /*
     public static java.lang.String outputList(Person[] list) throws java.lang.NullPointerException {
 
     }
@@ -22,7 +27,7 @@ public class Administration {
     public static Person[] sortList(Person[] list) throws java.lang.NullPointerException {
 
     }
-
+    */
 
 
 }
