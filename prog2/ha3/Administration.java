@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.io.*;
 
 public class Administration {
  
@@ -24,8 +25,16 @@ public class Administration {
 
     
     public static String outputList(Person[] list) throws NullPointerException {    
-        return Arrays.toString(list);
+        try{
+            return Arrays.toString(list);
+        } catch (NullPointerException e){
+            System.out.println("Something went wrong.");
+        }
+
+        return "";
+        
     }
+
 
 
     /*
