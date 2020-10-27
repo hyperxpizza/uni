@@ -1,8 +1,7 @@
 import java.util.Arrays;
-import java.io.*;
 
 public class Administration {
- 
+	 
     public static int countFemale(Person[] list){
         int count = 0;
         for(int i=0; i<list.length; i++){
@@ -14,7 +13,7 @@ public class Administration {
         return count;
     }
 
-    public Person[] createList(Person... persons){
+    public static Person[] createList(Person... persons){
        Person[] personArray = new Person[persons.length];
        for(int i=0;i<persons.length; i++){
            personArray[i] = persons[i];
@@ -22,6 +21,17 @@ public class Administration {
 
        return personArray;
     }
-
     
+    
+    public static Person[] sortList(Person[] list) throws java.lang.NullPointerException {
+    	Arrays.sort(list);
+    	return list;
+    }
+    
+    public static java.lang.String outputList(Person[] list) throws java.lang.NullPointerException{
+    	if(list == null) {
+    		throw new java.lang.NullPointerException();
+    	}
+    	return Arrays.toString(list);
+    }
 }

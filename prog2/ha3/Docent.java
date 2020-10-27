@@ -1,7 +1,7 @@
 public class Docent extends Person{
     private int fachbereich;
 
-    public Docent(String vorname, String nachname, char geschlecht){
+    public Docent(String vorname, String nachname, char geschlecht, int fachbereich){
         super(vorname, nachname, geschlecht);
         this.fachbereich = fachbereich;
     }
@@ -9,10 +9,12 @@ public class Docent extends Person{
     public int getFachbereich(){
         return this.fachbereich;
     }
+    
+    public void setFachbereich(int fachbereich) {
+    	this.fachbereich = fachbereich;
+    }
 
     public String toString(){
-        String message = "Docent\n" + "Vorname: " + this.getVorname() + "\n Nachname: " + this.getNachname() + "\n Geschlecht: " + this.getGeschlecht() + "\n Fachbereich: " + this.getFachbereich();
-
-        return message;
+    	return this.getVorname() + " " + this.getNachname() + " fachbereich: " + this.getFachbereich();
     }
 }

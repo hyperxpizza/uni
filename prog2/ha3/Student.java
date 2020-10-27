@@ -9,10 +9,12 @@ public class Student extends Person {
     public int getMatrikelnummer(){
         return this.matrikelnummer;
     }
+    
+    public void setMatrikelnummer(int matrikelnummer) {
+    	this.matrikelnummer = matrikelnummer;
+    }
 
     public String toString(){
-        String message = "Student: \n" + "Vorname: " + this.getVorname() + "\nNachname: " + this.getNachname() + "\nGeschlecht: " + this.getGeschlecht() + "\nMatrikelnummer: " + this.getMatrikelnummer();
-
-        return message;
+       return this.getVorname() + " " + this.getNachname() + ", matriculation number: " + this.getMatrikelnummer();
     }
 }

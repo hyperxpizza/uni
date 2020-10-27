@@ -81,6 +81,15 @@ public class UniversityUnitTest {
 		assertEquals("[Martina Zuse, Angela Bart, Thomas Bart, matriculation number: 343]", Administration.outputList(new Person[] {p1, p2, s1}));
 	}
 	
+	// Additional tests for outputList
+	@Test(expected = NullPointerException.class)
+	public void testOutputListException() {
+		Administration.outputList(null);
+	}
 	
-
+	@Test
+	public void testOutputListDocent() {
+		assertEquals("[Martin Busch fachbereich: 4]", Administration.outputList(new Docent[] {d1}));
+	}
+	
 }
