@@ -1,5 +1,6 @@
 
 package MyTestProg;
+
 import java.util.Scanner;
 public class Console {
     // Integer attributes
