@@ -11,5 +11,6 @@ public class App {
     public static void main(String[] args) {
         Console c = new Console();
         c.setIntegers();
+        c.setStrings();
     }
 }

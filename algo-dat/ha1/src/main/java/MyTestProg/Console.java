@@ -28,6 +28,7 @@ public class Console {
     public void setStrings(){
         // init scanner class
         Scanner scan = new Scanner(System.in);
+        scan.nextLine();
         System.out.print("Enter prename: ");
         this.prename = scan.nextLine();
         System.out.print("\n");
