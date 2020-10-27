@@ -9,7 +9,8 @@
 plugins {
     // Apply the java plugin to add support for Java
     id 'java'
-    id 'eclipse'// required for generating eclipse project filesid'idea'
+    id 'eclipse'
+    id 'idea'
     // Apply the application plugin to add support for building a CLI application.
     id 'application'
 }
