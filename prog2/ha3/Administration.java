@@ -24,36 +24,4 @@ public class Administration {
     }
 
     
-    public static String outputList(Person[] list) throws NullPointerException {    
-        try{
-            return Arrays.toString(list);
-        } catch (NullPointerException e){
-            System.out.println("Something went wrong.");
-        }
-
-        return "";
-        
-    }
-
-
-
-    /*
-    public static Person[] sortList(Person[] list) throws java.lang.NullPointerException {
-
-        Person temp;
-
-        for(int i=0; i<list.length;i++){
-            for(int j=i+1; j<list.length; j++){
-                if (list[i].getNachname().compareTo(list[j].getNachname() > 0)){
-                    temp = list[i];
-                    list[i] = list[j];
-                    list[j] = temp;
-                }
-            }
-        }
-
-        return list;
-    }
-
-    */
 }
