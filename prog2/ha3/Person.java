@@ -8,7 +8,11 @@ public class Person {
     public Person(String vorname, String nachname, char geschlecht){
         this.vorname = vorname;
         this.nachname = nachname;
-        this.geschlecht = geschlecht;
+        if(geschlecht == 'm' || geschlecht == 'f' || geschlecht == 'd'){
+            this.geschlecht = geschlecht;
+        }else{
+            throw new IllegalArgumentException("wrong input given, please enter the valid input!");
+        }
     }
 
     // getters
@@ -31,10 +35,6 @@ public class Person {
     
     public void setNachname(String nachname) {
     	this.nachname = nachname;
-    }
-    
-    public void setGeschlecht(char geschlecht) {
-    	this.geschlecht = geschlecht;
     }
     
     // toString method, prints out private attributes
