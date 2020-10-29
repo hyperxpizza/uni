@@ -30,18 +30,22 @@ public class Administration {
     
     // Sorts out and returns objects of class Person in Array alphabetically, if the array is null, throws NullPointerException
     public static Person[] sortList(Person[] list) throws NullPointerException {
+    	 if (list == null) {
+             throw new NullPointerException("Error!!! array cannot be null.");
+         }else {
+             for (int j = 0; j <( list.length); j++) {  // bubble sort algorithm
+                 for (int i = 0; i < list.length-1; i++) {
+                 if (list[i].getNachname().compareTo(list[i+1].getNachname()) >= 0) {
+                     Person temp = list[i];
+                     list[i] = list[i+1];
+                     list[i+1] = temp;
+                 }
+                 }
+             }
+         }
 
-        for (int i = 0; i < list.length; i++) {
-            for (int j = i + 1; j < list.length; j++) {
-                if (list[i].getNachname().compareTo(list[j].getNachname()) > 0) {
-                    Person temp = list[i];
-                    list[j] = list[i];
-                    list[i] = temp;
-                }
-            }
-        }
-
-        return list;
+         System.out.println(outputList(list));
+         return list;
     }
     
     
