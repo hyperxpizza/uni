@@ -3,6 +3,10 @@ public class Docent extends Person{
     // Additional private attribute
 	private int fachbereich;
 
+    public Docent(){
+        
+    }
+
 	// constructor
     public Docent(String vorname, String nachname, char geschlecht, int fachbereich){
         // invoke master class (Person) constructor

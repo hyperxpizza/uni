@@ -4,6 +4,9 @@ public class Person {
     private String nachname;
     private char geschlecht;
 
+    public Person(){
+    }
+
     // Person class constructor
     public Person(String vorname, String nachname, char geschlecht){
         this.vorname = vorname;

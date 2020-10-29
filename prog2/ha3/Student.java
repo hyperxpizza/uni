@@ -3,6 +3,10 @@ public class Student extends Person {
 	// Additional private attribute
     private int matrikelnummer;
 
+    public Student(){
+        
+    }
+
     // constructor
     public Student(String vorname, String nachname, char geschlecht,int matrikelnummer){
     	// invoke master class (Person) constructor
