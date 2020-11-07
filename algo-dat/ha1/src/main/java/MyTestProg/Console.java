@@ -39,4 +39,14 @@ public class Console {
         scan.close();
     }
 
+
+    public void printMenu(){
+        System.out.println("1. Greatest Common Divisor (GCD) - (Recursive) Euclid's algorithm subtraction.");
+        System.out.println("2. Greatest Common Divisor (GCD) - (Iterative) Euclid's algorithm subtraction.");
+        System.out.println("3. Greatest Common Divisor (GCD) - (Recursive) Euclid's algorithm division rest.");
+        System.out.println("4. Greatest Common Divisor (GCD) - (Iterative) Euclid's algorithm division rest.");
+        System.out.println("5. Sieve of Eratosthenes.");
+        System.out.println("6. Read properties like surname, prename, x and y");
+        System.out.println("0 Exit");
+    }
 }
