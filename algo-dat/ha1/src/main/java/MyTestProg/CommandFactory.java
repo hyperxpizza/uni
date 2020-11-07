@@ -13,7 +13,7 @@ public class CommandFactory {
         list.add(createEuclidSubtractionIterative());
         list.add(createEuclidDivisionRestRecursive());
         list.add(createEuclidDivisionRestIterative());
-        //TODO: Implementation of ICommands for Sieve of Eratosthenes and so one
+        list.add(createSieveEratosthenes());
         return list;
     }
 
@@ -21,8 +21,8 @@ public class CommandFactory {
         return new ICommand() {
             @Override
             public String execute() {
-                int x = Console.readIntegerFromStdIn(sTextPleaseInsertANumber);
-                int y = Console.readIntegerFromStdIn(sTextPleaseInsertANumber);
+                int x = Console.readIntegerFromStdIn("Enter number for x:");
+                int y = Console.readIntegerFromStdIn("Enter number for y:");
                 int result = x + y; // TODO: GCD.calcEuclidDivisionRestRecursive(x, y);
                 return System.lineSeparator() + "GCD is: " + result + System.lineSeparator();
             }
@@ -75,6 +75,20 @@ public class CommandFactory {
             @Override
             public String description() {
                 return "Greatest Common Divisor (GCD) - (Iterative) Euclid's algorithm division rest.";
+            }
+        };
+    }
+
+    static private ICommand createSieveEratosthenes(){
+        return new ICommand(){
+            @Override
+            public String execute(){
+                return "// TODO: Implementation";
+            }
+
+            @Override
+            public String description(){
+                return "Sieve of Eratosthenes.";
             }
         };
     }
