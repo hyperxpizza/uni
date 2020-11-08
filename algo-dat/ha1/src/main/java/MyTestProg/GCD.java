@@ -1,6 +1,6 @@
 package MyTestProg;
 
-public class CDG {
+public class GCD {
     public static int eculidSubstractionIterative(int x, int y){
         if(x==0){
             return y;

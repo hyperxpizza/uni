@@ -24,7 +24,7 @@ public class CommandFactory {
             public String execute() {
                 int x = Console.readIntegerFromStdIn(sTextPleaseInsertANumber);
                 int y = Console.readIntegerFromStdIn(sTextPleaseInsertANumber);
-                int result = CDG.euclidSubstractionRecursive(x, y);
+                int result = GCD.eculidDivisionRestRecursive(x, y);
                 return System.lineSeparator() + "GCD is: " + result + System.lineSeparator();
             }
 
@@ -39,7 +39,10 @@ public class CommandFactory {
         return new ICommand() {
             @Override
             public String execute() {
-                return "// TODO: Implementation";
+                int x = Console.readIntegerFromStdIn(sTextPleaseInsertANumber);
+                int y = Console.readIntegerFromStdIn(sTextPleaseInsertANumber);
+                int result = GCD.eculidSubstractionIterative(x, y);
+                return System.lineSeparator() + "GCD is: " + result + System.lineSeparator();
             }
 
             @Override
@@ -55,7 +58,7 @@ public class CommandFactory {
             public String execute() {
                 int x = Console.readIntegerFromStdIn(sTextPleaseInsertANumber);
                 int y = Console.readIntegerFromStdIn(sTextPleaseInsertANumber);
-                int result = x + y; // TODO: GCD.calcEuclidRecSubtraction(x, y);
+                int result = GCD.euclidSubstractionRecursive(int x, int y);
                 return System.lineSeparator() + "GCD is: " + result + System.lineSeparator();
             }
 
@@ -70,7 +73,10 @@ public class CommandFactory {
         return new ICommand() {
             @Override
             public String execute() {
-                return "// TODO: Implementation";
+                int x = Console.readIntegerFromStdIn(sTextPleaseInsertANumber);
+                int y = Console.readIntegerFromStdIn(sTextPleaseInsertANumber);
+                int result = GCD.eculidDivisionRestIterative(int x, int y);
+                return System.lineSeparator() + "GCD is: " + result + System.lineSeparator();
             }
 
             @Override
@@ -84,7 +90,9 @@ public class CommandFactory {
         return new ICommand(){
             @Override
             public String execute(){
-                return "// TODO: Implementation";
+                int x = Console.readIntegerFromStdIn(sTextPleaseInsertANumber);
+                boolean[] resultArray = SDE.siebDesEratosthenes(x);
+                return "todo";
             }
 
             @Override
