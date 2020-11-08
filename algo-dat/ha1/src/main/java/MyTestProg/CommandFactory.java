@@ -14,6 +14,7 @@ public class CommandFactory {
         list.add(createEuclidDivisionRestRecursive());
         list.add(createEuclidDivisionRestIterative());
         list.add(createSieveEratosthenes());
+        list.add(readProperties());
         return list;
     }
 
@@ -21,9 +22,9 @@ public class CommandFactory {
         return new ICommand() {
             @Override
             public String execute() {
-                int x = Console.readIntegerFromStdIn("Enter number for x:");
-                int y = Console.readIntegerFromStdIn("Enter number for y:");
-                int result = x + y; // TODO: GCD.calcEuclidDivisionRestRecursive(x, y);
+                int x = Console.readIntegerFromStdIn(sTextPleaseInsertANumber);
+                int y = Console.readIntegerFromStdIn(sTextPleaseInsertANumber);
+                int result = CDG.euclidSubstractionRecursive(x, y);
                 return System.lineSeparator() + "GCD is: " + result + System.lineSeparator();
             }
 
@@ -89,6 +90,20 @@ public class CommandFactory {
             @Override
             public String description(){
                 return "Sieve of Eratosthenes.";
+            }
+        };
+    }
+
+    static private ICommand readProperties(){
+        return new ICommand(){
+            @Override
+            public String execute(){
+                return "// TODO: Implementation";
+            }
+
+            @Override
+            public String description(){
+                return "Read properties like surname, prename, x and y.";
             }
         };
     }
