@@ -30,7 +30,14 @@ public class CDG {
     }
 
     public static int eculidDivisionRestIterative(int x, int y){
-        
+        int h;
+        while (y != 0){
+            h = x % b;
+            x = y;
+            y = h;
+        }
+
+        return x;
     }
 
     public static int eculidDivisionRestRecursive(int x, int y){
