@@ -6,6 +6,8 @@ import java.util.LinkedList;
 
 public class App {
 
+    private String greeting = "app should have a greeting";
+
     public static void main(String[] args) {
         LinkedList<ICommand> commands = CommandFactory.returnCommandList();
         do {
@@ -39,5 +41,9 @@ public class App {
             }   System.out.println("\tWarning -> Please select a valid option between 0 and " + (commands.size() - 1) + ".");
         }
         while (true);
+    }
+
+    public String getGreeting(){
+        return this.greeting;
     }
 }

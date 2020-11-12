@@ -1,7 +1,7 @@
 package MyTestProg;
 
 public class SDE {
-    public static []boolean siebDesEratosthenes(int x){
+    public static boolean[] siebDesEratosthenes(int x){
         if (x < 2){
             return null;
         }

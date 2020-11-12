@@ -3,7 +3,7 @@ package MyTestProg;
 import java.util.LinkedList;
 
 public class CommandFactory {
-    static private final String sTextPleaseInsertANumber = "\tPlease insert a number:";
+    static private final String sTextPleaseInsertANumber = "Please insert a number:";
     static private final String sExitMessage = "CLI program closed!";
 
     static public LinkedList<ICommand> returnCommandList() {
@@ -58,7 +58,7 @@ public class CommandFactory {
             public String execute() {
                 int x = Console.readIntegerFromStdIn(sTextPleaseInsertANumber);
                 int y = Console.readIntegerFromStdIn(sTextPleaseInsertANumber);
-                int result = GCD.euclidSubstractionRecursive(int x, int y);
+                int result = GCD.euclidSubstractionRecursive(x, y);
                 return System.lineSeparator() + "GCD is: " + result + System.lineSeparator();
             }
 
@@ -75,7 +75,7 @@ public class CommandFactory {
             public String execute() {
                 int x = Console.readIntegerFromStdIn(sTextPleaseInsertANumber);
                 int y = Console.readIntegerFromStdIn(sTextPleaseInsertANumber);
-                int result = GCD.eculidDivisionRestIterative(int x, int y);
+                int result = GCD.eculidDivisionRestIterative(x, y);
                 return System.lineSeparator() + "GCD is: " + result + System.lineSeparator();
             }
 

@@ -32,7 +32,7 @@ public class GCD {
     public static int eculidDivisionRestIterative(int x, int y){
         int h;
         while (y != 0){
-            h = x % b;
+            h = x % y;
             x = y;
             y = h;
         }
