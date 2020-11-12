@@ -23,7 +23,7 @@ public class App {
     static private String buildCLIMenu(LinkedList<ICommand> commands) {
         StringBuilder builder = new StringBuilder();
         builder.append(System.lineSeparator());
-        builder.append("Console-Application: Exercise-1 <Vorname> <Name> <Matrikelnummer>" + System.lineSeparator());
+        builder.append("Console-Application: Exercise-1 Wojciech Maximilian Frackowski 576278" + System.lineSeparator());
         builder.append(System.lineSeparator());
         for (int i = 1; i < commands.size(); i++) {
             ICommand cmd = commands.get(i);
