@@ -1,25 +1,37 @@
 package MyTestProg;
-
+import java.util.Arrays;
 public class SDE {
-    public static boolean[] siebDesEratosthenes(int x){
-        if (x < 2){
+    public static String siebDesEratosthenes(int n){
+        if (n < 2){
             return null;
         }
 
-        boolean prime[] = new boolean[x+1];
-        for(int i=0;i<x;i++){
-            prime[i] = true;
+        int prime[] = new int[n + 1];
+        for (int i = 0; i < n; i++) {
+            prime[i] = i;
         }
-
-        for(int i=2; i*i < x; i++){
-            if(prime[i] == true){
-                for(int j =(i*i); j<x; j=j+i){
-                    prime[j] = false;
-                }
+        for (int first = 2; first * first <= n; first++) {
+            if (prime[first] > 0) {
+                for (int i = first * 2; i <= n; i += first)
+                    prime[i] = 0;
+            }
+        }
+        int numberPrimes = 0;
+        for (int i = 2; i <= n; i++) {
+            if (prime[i] > 0) {
+                numberPrimes++;
             }
         }
 
-        return prime;
+        int j = 0;
+        int[] primes = new int[numberPrimes];
+        for(int i=2; i<=n; i++){
+            if(prime[i] > 0){
+                primes[j++] = i;
+            }
+        }
+
+        return Arrays.toString(primes);
     }
 
 }

@@ -9,9 +9,17 @@ public class Console {
       
         System.out.print(text);
         int num = sc.nextInt();
-        sc.close();
         
         return num;
+    }
+
+    public static String readStringFromStdIn(String text){
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print(text);
+        String msg = sc.nextLine();
+
+        return msg;
     }
 
 }

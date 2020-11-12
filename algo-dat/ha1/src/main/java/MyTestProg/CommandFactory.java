@@ -91,8 +91,8 @@ public class CommandFactory {
             @Override
             public String execute(){
                 int x = Console.readIntegerFromStdIn(sTextPleaseInsertANumber);
-                boolean[] resultArray = SDE.siebDesEratosthenes(x);
-                return "todo";
+                String resultArray = SDE.siebDesEratosthenes(x);
+                return resultArray;
             }
 
             @Override
@@ -106,7 +106,14 @@ public class CommandFactory {
         return new ICommand(){
             @Override
             public String execute(){
-                return "// TODO: Implementation";
+                String surname = Console.readStringFromStdIn("Please type in your surname: ");
+                String prename = Console.readStringFromStdIn("Please type in your prename: ");
+                int x = Console.readIntegerFromStdIn(sTextPleaseInsertANumber);
+                int y = Console.readIntegerFromStdIn(sTextPleaseInsertANumber);
+
+                String msg = "Surname: " + surname + "\n Prename: " + prename + "\n x: " + x + "\n y: " + y + "\n";
+
+                return msg;
             }
 
             @Override
