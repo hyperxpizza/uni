@@ -1,4 +1,6 @@
-package reisenanbieter;
+package reiseanbieter;
+
+import kunden.Kunde;
 
 public interface Reiseanbieter {
 	
@@ -6,9 +8,7 @@ public interface Reiseanbieter {
 	public static final int BUS = 1;
 	public static final int BAHN = 2;
 	
-	//Entfernung in Km auf Strassen (Busreise)
 	public static final double entfernungBus = 288.2;
-	//entfernung in Km auf Schienen (Bahnreise)
 	public static final double entfernungBahn = 310;
 	
 	public abstract boolean buchen(Kunde k, int transport);

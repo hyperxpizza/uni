@@ -7,7 +7,7 @@ public class Student extends Privatperson {
         super();
     }
 
-    public Student(Sring vorname, String nachname, String hochschule){
+    public Student(String vorname, String nachname, String hochschule){
         super(vorname, nachname);
         this.hochschule = hochschule;
     }

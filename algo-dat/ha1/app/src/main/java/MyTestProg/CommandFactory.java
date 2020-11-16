@@ -92,7 +92,10 @@ public class CommandFactory {
             public String execute(){
                 int x = Console.readIntegerFromStdIn(sTextPleaseInsertANumber);
                 String resultArray = SDE.siebDesEratosthenes(x);
-                return resultArray;
+                if (resultArray == null){
+                    return "Input must be bigger than 2! Try again";
+                }
+                return "Prime numbers: " + resultArray;
             }
 
             @Override

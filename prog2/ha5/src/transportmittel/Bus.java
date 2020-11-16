@@ -12,4 +12,12 @@ public class Bus implements Transportmittel {
         this.geschwindigkeit = geschwindigkeit;
         this.plaetze = plaetze;
     }
+    
+    public double getGeschwindigkeit() {
+    	return this.geschwindigkeit;
+    }
+    
+    public int getAnzahlPlaetze() {
+    	return this.plaetze;
+    }
 }

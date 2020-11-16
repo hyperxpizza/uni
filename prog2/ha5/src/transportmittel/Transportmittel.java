@@ -1,7 +1,6 @@
 package transportmittel;
 
 public interface Transportmittel {
-
 	/**
 	 * liefert die Durchschnittsgeschwindigkeit des transportmittels zurueck
 	 * 
