@@ -1,28 +1,48 @@
+import java.util.EmptyStackException;
 
 public class Stack implements StackSchnittstelle {
- 
-    public Stack(){
+    private Node top = null;
 
+    public void push(int data){
+        Node n = new Node(data);
+        n.setNext(this.top);
+        this.top = n;
     }
 
-    public void push(){
+    public int pop() throws EmptyStackException{
+        if(top == null){
+            throw new EmptyStackException();
+        }
 
+        Node n = this.top;
+        this.top = top.getNext();
+        return n.getData();
     }
 
-    public int pop(){
+    public int top() throws EmptyStackException{
+        if(this.top == null){
+            throw new EmptyStackException();
+        }
 
-    }
-
-    public int top(){
-
+        return this.top.getData();
     }
 
     public boolean isEmpty(){
+        if (this.top == null){
+            return true;
+        }
+
         return false;
     }
 
     public String toString(){
+        Node n = this.top;
         String msg = "";
+        while (n != null){
+            msg = msg + n.getData() + "\n";
+            n = n.getNext();
+        }
+
         return msg;
     }
 }
