@@ -1,7 +1,24 @@
 
 public class Queue implements QueueSchnittstelle {
 
-    public Queue(){
-        System.out.println("Warning! Running constructor without any parameters");
+    public void enqueue(){
+
     }
+
+    public int dequeue(){
+
+    }
+
+    public int first(){
+
+    }
+
+    public boolean isEmpty(){
+
+    }
+
+    public String toString(){
+        
+    }
+    
 }
