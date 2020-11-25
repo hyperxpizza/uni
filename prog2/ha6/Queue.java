@@ -1,8 +1,13 @@
 import java.util.EmptyStackException;
 
-public class Queue implements QueueSchnittstelle {
-    private Node first = null;
-    private Node last = null;
+public class Queue extends Liste implements QueueSchnittstelle {
+    private Node first; 
+    private Node last;
+
+    public Queue(){
+        this.first = null;
+        this.last = null; 
+    }
 
     public void enqueue(int x){
         Node n = new Node(x);
@@ -14,11 +19,17 @@ public class Queue implements QueueSchnittstelle {
         this.last = n;
     }
 
+    
     public int dequeue() throws EmptyStackException{
-        /*
-        TODO
-        */
-    }
+        if(this.first == null){
+            return null;
+        }
+
+        Node temp = this.first;
+        this.first = this.first.getNext();
+
+
+    } 
 
     public int first() throws EmptyStackException{
         if(first == null){
@@ -29,7 +40,7 @@ public class Queue implements QueueSchnittstelle {
     }
 
     public boolean isEmpty(){
-        if((this.first == null) && (this.last == null)){
+        if((this.top == null) && (this.last == null)){
             return true;
         }
 

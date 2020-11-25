@@ -13,4 +13,12 @@ public class Liste {
 
         return length;
     }
+
+    public boolean isEmpty(){
+        if (this.top == null){
+            return true;
+        }
+
+        return false;
+    }
 }
