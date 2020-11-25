@@ -1,6 +1,6 @@
 import java.util.EmptyStackException;
 
-public class Stack extends List implements StackSchnittstelle {
+public class Stack extends Liste implements StackSchnittstelle {
     private Node top = null;
 
     public void push(int data){

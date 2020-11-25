@@ -1,8 +1,6 @@
 
 public class Liste {
-    private Node first = null;
-    private Node last = null;
-
+    
     public int size() {
         Node n = this.first;
         int length = 0;

@@ -1,5 +1,4 @@
 
-
 public interface StackSchnittstelle {
     public abstract void push(int data);
     public abstract int pop();
