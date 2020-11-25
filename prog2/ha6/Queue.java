@@ -22,7 +22,7 @@ public class Queue extends Liste implements QueueSchnittstelle {
     
     public int dequeue() throws EmptyStackException{
         if(this.first == null){
-            return null;
+            throw new EmptyStackException();
         }
 
         Node temp = this.first;
@@ -44,7 +44,7 @@ public class Queue extends Liste implements QueueSchnittstelle {
     }
 
     public boolean isEmpty(){
-        if((this.top == null) && (this.last == null)){
+        if((this.first == null) && (this.last == null)){
             return true;
         }
 

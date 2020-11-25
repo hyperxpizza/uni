@@ -53,5 +53,46 @@ public class Tests {
 		stack.push(1);
 		assertEquals(1, stack.top());
 	}
-
-}
+	
+	@Test
+	public void testQueueEnqueue() {
+		Queue q = new Queue();
+		q.enqueue(1);
+		assertEquals("<--- 1 <---", q.toString());
+	}
+	
+	@Test(expected = EmptyStackException.class)
+	public void testQueueDequeueEmpty() {
+		Queue q = new Queue();
+		q.dequeue();
+	}
+	
+	@Test
+	public void testQueueDequeue() {
+		Queue q = new Queue();
+		q.enqueue(1);
+		q.enqueue(2);
+		assertEquals(1, q.dequeue());
+	}
+	
+	@Test(expected = EmptyStackException.class)
+	public void testQueueFirstEmpty() {
+		Queue q = new Queue();
+		q.first();
+	}
+	
+	@Test
+	public void testQueueFirst() {
+		Queue q = new Queue();
+		q.enqueue(1);
+		q.enqueue(2);
+		assertEquals(1, q.first());
+	}
+	
+	@Test
+	public void testQueueEmpty() {
+		Queue q = new Queue();
+		q.enqueue(1);
+		assertEquals(false, q.isEmpty());
+	}
+}	
