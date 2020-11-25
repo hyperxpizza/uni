@@ -28,7 +28,11 @@ public class Queue extends Liste implements QueueSchnittstelle {
         Node temp = this.first;
         this.first = this.first.getNext();
 
-
+        if(this.first==null){
+            this.last = null;
+        }
+        
+        return temp.getData();
     } 
 
     public int first() throws EmptyStackException{
