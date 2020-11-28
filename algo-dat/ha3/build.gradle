@@ -30,5 +30,5 @@ dependencies {
 
 application {
     // Define the main class for the application.
-    mainClassName = 'exercise2.App'
+    mainClassName = 'ha3.App'
 }
