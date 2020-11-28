@@ -5,9 +5,100 @@ package ha3;
 
 import java.util.LinkedList;
 
-public class App {
+import main.java.ha3.Console;
+import main.java.ha3.Stackable;
+import main.java.ha3.Student;
+import main.java.ha3.Stack;
 
+public class App {
+    public static Stackable<Student> stack = new Stack<Student>();
     public static void main(String[] args) {
-        // initialize Stack
+        boolean running = true;
+        
+        while(running){
+            // print menu
+            printMenu();
+
+            //Get users choice
+            int choice = Console.readIntegerFromStdIn("Please enter a number:");
+
+            switch(choice){
+                case 0:
+                    running = false;
+                    break;
+                case 1:
+                    pushStudent();
+                    break;
+                case 2:
+                    pop();
+                    break;
+                case 3:
+                    peek();
+                    break;
+                case 4:
+                    empty();
+                    break;
+                case 5:
+                    stack.clear();
+                    System.out.println("[+] Stack cleared");
+                case 6:
+                    stack.print();
+                case 7:
+                    int size = stack.size();
+                    System.out.println(size);
+            }
+        }
+
+        System.exit(0);
+
+    }
+
+    public static void printMenu(){
+        System.out.println("Console-Application: Excersise-3  Wojciech Maximilian Frackowski <Matrikelnummer>");
+        System.out.println("1. Push student to stack.");
+        System.out.println("2. Pop student from stack.");
+        System.out.println("3. Peek student.");
+        System.out.println("4. Check if students are on the stack.");
+        System.out.println("5. Clear stack.");
+        System.out.println("6. Print all students from stack.");
+        System.out.println("7. Get size of stack.");
+        System.out.println("0. Exit.");
+    }
+
+    public static void pushStudent(){
+        String prename = Console.readStringFromStdIn("Please enter prename: ");
+        String surname = Console.readStringFromStdIn("Please enter surname");
+        int course = Console.readIntegerFromStdIn("Please enter course number: ");
+        int matriculationNumber = Console.readIntegerFromStdIn("Please enter matriculation number: ");
+        Student s = new Student(prename, surname, course, matriculationNumber);
+        stack.push(s);
+    }
+
+    public static void peek(){
+        Student result = stack.peek();
+        if(result == null){
+            System.out.println("[-] Stack is Empty!");
+            return; 
+        } 
+        System.out.println(result);
+
+    }
+
+    public static void pop(){
+        Student result = stack.pop();
+        if(result == null){
+            System.out.println("[-] Stack is Empty!");
+            return;
+        } 
+        System.out.println(result);
+    }
+
+    public static void empty(){
+        boolean empty = stack.isEmpty();
+        if(empty == true){
+            System.out.println("[-] Stack empty");
+        } else {
+            System.out.println("[+] Stack not empty");
+        }
     }
 }
