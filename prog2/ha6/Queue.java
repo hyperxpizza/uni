@@ -1,67 +1,61 @@
 import java.util.EmptyStackException;
 
-public class Queue extends Liste implements QueueSchnittstelle {
-    private Node first; 
-    private Node last;
+public class Queue extends Liste implements QueueSchnittstelle{
 
     public Queue(){
-        this.first = null;
-        this.last = null; 
+        super();
     }
 
-    public void enqueue(int x){
+    @Override
+    public void enqueue(int x) {
+
         Node n = new Node(x);
-        if(this.first == null){
-            this.first = n;
+        if(this.start == null){ //start is the first element of the queue
+            this.start = n;
         } else {
-            this.last.setNext(n);
+            this.end.next = n;  // end is the last element of the queue
         }
-        this.last = n;
+        this.end = n;
     }
 
-    
-    public int dequeue() throws EmptyStackException{
-        if(this.first == null){
+    @Override
+    public int dequeue() throws EmptyStackException {
+        if(this.start == null){
             throw new EmptyStackException();
         }
+        Node temp = this.start;
+        this.start = this.start.next;
 
-        Node temp = this.first;
-        this.first = this.first.getNext();
-
-        if(this.first==null){
-            this.last = null;
+        if(this.start==null){
+            this.end = null;
         }
-        
-        return temp.getData();
-    } 
+        return temp.data;
+    }
 
+    @Override
     public int first() throws EmptyStackException{
-        if(first == null){
+        if(this.start == null){
             throw new EmptyStackException();
         }
-
-        return this.first.getData();
+        return this.start.data;
     }
 
-    public boolean isEmpty(){
-        if((this.first == null) && (this.last == null)){
-            return true;
-        }
-
-        return false;
+    @Override
+    public boolean isEmpty() {
+        return super.isEmpty();
     }
 
-    public String toString(){
-        String msg = "<--- ";
-        Node n = this.first;
+    @Override
+    public String toString() {
+        String res = "<--- ";
+        Node n = this.start;
         while(n != null){
-            msg = msg + n.getData() + " ";
-            n  = n.getNext();
+            res = res + n.data + " ";
+            n  = n.next;
         }
 
-        msg = msg + "<---";
+        res = res + "<---";
 
-        return msg;
+        return res;
     }
-    
 }

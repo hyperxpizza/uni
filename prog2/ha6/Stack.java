@@ -1,40 +1,50 @@
 import java.util.EmptyStackException;
 
-public class Stack extends Liste implements StackSchnittstelle {
-    private Node top = null;
+public class Stack extends Liste implements StackSchnittstelle{
 
-    public void push(int data){
+    public Stack(){
+        super();
+    }
+
+    @Override
+    public void push(int data) {
         Node n = new Node(data);
-        n.setNext(this.top);
-        this.top = n;
+        n.next = start;  // start is the topmost element of the stack
+        start = n;
     }
 
+    @Override
     public int pop() throws EmptyStackException{
-        if(top == null){
+        if(start == null){
             throw new EmptyStackException();
         }
-
-        Node n = this.top;
-        this.top = top.getNext();
-        return n.getData();
+        Node n = start;
+        start = start.next;
+        return n.data;
     }
 
-    public int top() throws EmptyStackException{
-        if(this.top == null){
+    @Override
+    public int top() throws EmptyStackException {
+        if(start == null){
             throw new EmptyStackException();
         }
-
-        return this.top.getData();
+        return start.data;
     }
 
-    public String toString(){
-        Node n = this.top;
-        String msg = "";
-        while (n != null){
-            msg = msg + n.getData() + "\n";
-            n = n.getNext();
-        }
+    @Override
+    public boolean isEmpty() {
+       return super.isEmpty();
+    }
 
-        return msg;
+
+    @Override
+    public String toString() {
+        Node n = start;
+        String res = "";
+        while(n != null){
+            res = res +"** " + n.data +" **" + "\n";
+            n = n.next;
+        }
+        return res + "*******";
     }
 }
