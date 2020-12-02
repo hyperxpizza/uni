@@ -2,6 +2,7 @@
 
 public class BinTree {
     private BinNode root = null;
+    public int prev = Integer.MIN_VALUE;
 
     public BinTree(){
         root = null;
@@ -34,15 +35,26 @@ public class BinTree {
         return count;
     }
 
-    public boolean isSorted(){
-        return false;
+    public boolean isSorted(BinNode root){
+        if(root != null){
+            if(!isSorted(root.left)){
+                return false;
+            }
+
+            if (root.data <= prev){
+                return false;
+            }
+
+            prev = root.data;
+
+            return isSorted(root.right);
+        }
+
+        return true;
     }
 
-    public boolean removeNode(){
-        // if 
-        if (this.isSorted() == false) {
-            return false;
-        }
-        return false;
+    public boolean removeNode(BinNode root, int key){
+        
+        
     }
 }
