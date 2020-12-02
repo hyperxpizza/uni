@@ -21,40 +21,70 @@ public class BinTree {
         return counter;
     }
 
-    public int countTwoChildrenNodes(BinNode root){
-        if(root == null){
+    public int countTwoChildrenNodes(BinNode k){
+        if(k == null){
             return 0;
         }
 
         int count = 0;
-        if(root.left != null && root.right != null){
+        if(k.left != null && k.right != null){
             count++;
         }
 
-        count += (countTwoChildrenNodes(root.left) + countTwoChildrenNodes(root.right));
+        count += (countTwoChildrenNodes(k.left) + countTwoChildrenNodes(root.right));
         return count;
     }
 
-    public boolean isSorted(BinNode root){
-        if(root != null){
-            if(!isSorted(root.left)){
+    public boolean isSorted(BinNode k){
+        if(k != null){
+            if(!isSorted(k.left)){
                 return false;
             }
 
-            if (root.data <= prev){
+            if (k.data <= prev){
                 return false;
             }
 
-            prev = root.data;
+            prev = k.data;
 
-            return isSorted(root.right);
+            return isSorted(k.right);
         }
 
         return true;
     }
 
-    public boolean removeNode(BinNode root, int key){
+    public boolean removeNode(BinNode k, int key){
+        //if tree is not sorted
         
-        
+    }
+
+    private void insertNode(BinNode neu, BinNode k){
+        if(k != null){
+            if(neu.data < k.data){
+                if(k.left == null){
+                    k.left = neu;
+                } else {
+                    insertNode(neu, k.left);
+                }
+            }
+            if (neu.data > k.data){
+                if(k.right == null){
+                    k.right = neu;
+                }
+                else{
+                    insertNode(neu, k.right);
+                }
+            }
+            if(neu.data == k.data){
+                System.out.println("Knoten vorhanden");
+            }
+        } else {
+            root = neu;
+        }
+    }
+
+    public void insertNode(int data){
+        BinNode n = new BinNode(data);
+        insertNode(n, root);
     }
 }
