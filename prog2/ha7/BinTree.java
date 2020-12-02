@@ -19,4 +19,30 @@ public class BinTree {
 
         return counter;
     }
+
+    public int countTwoChildrenNodes(BinNode root){
+        if(root == null){
+            return 0;
+        }
+
+        int count = 0;
+        if(root.left != null && root.right != null){
+            count++;
+        }
+
+        count += (countTwoChildrenNodes(root.left) + countTwoChildrenNodes(root.right));
+        return count;
+    }
+
+    public boolean isSorted(){
+        return false;
+    }
+
+    public boolean removeNode(){
+        // if 
+        if (this.isSorted() == false) {
+            return false;
+        }
+        return false;
+    }
 }
