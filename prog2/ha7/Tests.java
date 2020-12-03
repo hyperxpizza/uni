@@ -141,8 +141,19 @@ public class Tests {
     	//3nd level
     	root.left.left.right = new BinNode(3);
     	root.left.left.left = new BinNode(1);
-    	assertEquals(true, tree.removeNode(1));
-    }
+    	assertEquals(true, tree.removeNode(3));
+        assertEquals(true, tree.isSorted());
+
+        assertEquals(true, tree.removeNode(9));
+        assertEquals(true, tree.isSorted());
+
+        assertEquals(true, tree.removeNode(4));
+        assertEquals(true, tree.isSorted());
+
+        assertEquals(true, tree.removeNode(7));
+        assertEquals(true, tree.isSorted());
+        
+}
     
     @Test
     public void testRemoveNode2() {

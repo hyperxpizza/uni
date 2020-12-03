@@ -1,8 +1,7 @@
 public class BinTree {
 
     private BinNode root = null;
-    private int prev = Integer.MIN_VALUE;
-
+    
     public BinTree(){
         root = null;
     }
@@ -47,18 +46,16 @@ public class BinTree {
      * @param k given node
      * @return true if the tree is sorted
      */
-    public boolean isSorted(BinNode k){
-        if(k != null){
-            if(!isSorted(k.left)){
-                return false;
-            }
-            if (k.data <= prev){
-                return false;
-            }
-            prev = k.data;
-            return isSorted(k.right);
+    public boolean isSorted(BinNode k, int min, int max){
+        if(k == null) {
+        	return true;
         }
-        return true;
+        
+        if (k.data < min || k.data > max) {
+        	return false;
+        }
+        
+        return (isSorted(k.left, min, k.data-1) && isSorted(k.right, k.data+1, max));
     }
 
 
@@ -70,7 +67,7 @@ public class BinTree {
         if(root == null) {
         	throw new NullPointerException();
         }
-    	return isSorted(root);
+    	return isSorted(root, Integer.MIN_VALUE, Integer.MAX_VALUE);
     }
 
     /**
@@ -114,5 +111,20 @@ public class BinTree {
         return k;
     }
   
+    
+
+    public void printBinTree(BinNode b){
+        if(b!=null){
+            System.out.print("(");
+            printBinTree(b.left);
+            System.out.print(" " + b.data + " ");
+            printBinTree(b.right);
+            System.out.print(")");
+        }
+    }
+
+    public void printBinTree() { //Verpackungsmethode
+        printBinTree(root);
+    }
 
 }
