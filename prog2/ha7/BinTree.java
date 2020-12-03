@@ -1,7 +1,7 @@
 
 
 public class BinTree {
-    private BinNode root = null;
+	public BinNode root = null;
     public int prev = Integer.MIN_VALUE;
 
     public BinTree(){
@@ -31,7 +31,7 @@ public class BinTree {
             count++;
         }
 
-        count += (countTwoChildrenNodes(k.left) + countTwoChildrenNodes(root.right));
+        count += (countTwoChildrenNodes(k.left) + countTwoChildrenNodes(k.right));
         return count;
     }
 
@@ -53,11 +53,7 @@ public class BinTree {
         return true;
     }
 
-    public boolean removeNode(BinNode k, int key){
-        //if tree is not sorted
-        
-    }
-
+   
     private void insertNode(BinNode neu, BinNode k){
         if(k != null){
             if(neu.data < k.data){
@@ -87,4 +83,6 @@ public class BinTree {
         BinNode n = new BinNode(data);
         insertNode(n, root);
     }
+    
+   
 }
