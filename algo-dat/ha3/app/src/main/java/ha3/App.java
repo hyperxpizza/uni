@@ -42,7 +42,8 @@ public class App {
                     stack.clear();
                     System.out.println("[+] Stack cleared");
                 case 6:
-                    stack.print();
+                    String msg = stack.print();
+                    System.out.println(msg);
                 case 7:
                     int size = stack.size();
                     System.out.println(size);
@@ -54,7 +55,7 @@ public class App {
     }
 
     public static void printMenu(){
-        System.out.println("Console-Application: Excersise-3  Wojciech Maximilian Frackowski <Matrikelnummer>");
+        System.out.println("Console-Application: Excersise-3  Wojciech Maximilian Frackowski 576278");
         System.out.println("1. Push student to stack.");
         System.out.println("2. Pop student from stack.");
         System.out.println("3. Peek student.");
@@ -67,7 +68,7 @@ public class App {
 
     public static void pushStudent(){
         String prename = Console.readStringFromStdIn("Please enter prename: ");
-        String surname = Console.readStringFromStdIn("Please enter surname");
+        String surname = Console.readStringFromStdIn("Please enter surname: ");
         int course = Console.readIntegerFromStdIn("Please enter course number: ");
         int matriculationNumber = Console.readIntegerFromStdIn("Please enter matriculation number: ");
         Student s = new Student(prename, surname, course, matriculationNumber);

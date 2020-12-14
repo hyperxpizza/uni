@@ -54,12 +54,15 @@ public class Stack<T> implements Stackable<T> {
 	}
 
 	@Override
-	public void print() {
+	public String print() {
+		String msg = "";
 		Node temp = head;
 		while (temp != null) {
-			System.out.println(temp.data);
+			msg = msg + temp.data + "\n";
 			temp = temp.next;
-		}		
+		}
+		
+		return msg;
 	}
 
 	@Override

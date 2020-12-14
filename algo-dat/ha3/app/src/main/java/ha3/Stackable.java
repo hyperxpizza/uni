@@ -6,6 +6,6 @@ public interface Stackable<T> {
 	T pop();
 	boolean isEmpty();
 	int size();
-	void print();
+	String print();
 	void clear();
 }
