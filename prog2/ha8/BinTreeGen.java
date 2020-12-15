@@ -1,4 +1,4 @@
-
+package ha8;
 
 public class BinTreeGen<E extends Comparable<E>> implements BinTreeGenInterface<E> {
     private BinNodeGen<E> root = null;
@@ -57,6 +57,37 @@ public class BinTreeGen<E extends Comparable<E>> implements BinTreeGenInterface<
     }
 
     public boolean insertNode(E item){
+        BinNodeGen<E> node = find(root, item);
+        if(node == null){
+        	BinNodeGen<E> newNode = new BinNodeGen<E>(item);
+            insertNode(root, newNode);
+            return true;
+        }
 
+        return false;
     }
+    
+    public void insertNode(BinNodeGen<E> root, BinNodeGen<E> newNode) {
+    	if(root != null) {
+    		if (newNode.data.compareTo(root.data) < 0) {
+    			if(root.left == null) {
+    				root.left = newNode;
+    			} else {
+    				insertNode(root.left, newNode);
+    			}
+    		}
+    		
+    		if(newNode.data.compareTo(root.data) > 0) {
+    			if(root.right == null) {
+    				root.right = newNode;
+    			} else {
+    				insertNode(root.right, newNode);
+    			}
+    		}
+    	} else {
+    		root = newNode;
+    	}
+    }
+
 }
+

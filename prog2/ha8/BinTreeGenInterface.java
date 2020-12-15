@@ -1,3 +1,5 @@
+package ha8;
+
 public interface BinTreeGenInterface<E extends Comparable<E>> {
 	
 	/**

@@ -1,3 +1,4 @@
+package ha8;
 
 public class BinNodeGen<E>{
     E data;
