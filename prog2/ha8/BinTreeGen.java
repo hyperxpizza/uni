@@ -1,8 +1,9 @@
 package ha8;
 
-public class BinTreeGen<E extends Comparable<E>> implements BinTreeGenInterface<E> {
-    private BinNodeGen<E> root = null;
-
+public class BinTreeGen<E extends Comparable<E>> implements BinTreeGenInterface<E>  {
+    public BinNodeGen<E> root = null;
+    static final int COUNT = 10;  
+    
     public BinTreeGen(){
         root = null;
     }
@@ -31,7 +32,16 @@ public class BinTreeGen<E extends Comparable<E>> implements BinTreeGenInterface<
     }
 
     public String toString(BinNodeGen<E> k){
-
+    	String msg = "";
+    	if(k != null) {
+    		msg = "(";
+    		msg = msg + toString(k.left);
+    		msg = msg + " " + k.data + " ";
+    		msg = msg + toString(k.right);
+    		msg = msg + ")";
+    	}
+    	
+    	return msg;
     }
 
     public BinNodeGen<E> find(E item){
@@ -57,19 +67,18 @@ public class BinTreeGen<E extends Comparable<E>> implements BinTreeGenInterface<
     }
 
     public boolean insertNode(E item){
-        BinNodeGen<E> node = find(root, item);
-        if(node == null){
-        	BinNodeGen<E> newNode = new BinNodeGen<E>(item);
-            insertNode(root, newNode);
-            return true;
-        }
-
-        return false;
+    	if(find(root, item) == item) {
+    		return false;
+    	} else {
+    		BinNodeGen<E> newNode = new BinNodeGen<E>(item);
+    		insertNode(root, newNode);
+    		return true;
+    	}
     }
     
     public void insertNode(BinNodeGen<E> root, BinNodeGen<E> newNode) {
     	if(root != null) {
-    		if (newNode.data.compareTo(root.data) < 0) {
+    		if(newNode.data.compareTo(root.data) < 0) {
     			if(root.left == null) {
     				root.left = newNode;
     			} else {
@@ -77,7 +86,7 @@ public class BinTreeGen<E extends Comparable<E>> implements BinTreeGenInterface<
     			}
     		}
     		
-    		if(newNode.data.compareTo(root.data) > 0) {
+    		if (newNode.data.compareTo(root.data) > 0) {
     			if(root.right == null) {
     				root.right = newNode;
     			} else {
@@ -87,6 +96,32 @@ public class BinTreeGen<E extends Comparable<E>> implements BinTreeGenInterface<
     	} else {
     		root = newNode;
     	}
+    }
+    
+    public void print2D() {
+    	print2D(root, 0);
+    }
+    
+    public void print2D(BinNodeGen<E> root, int space) {
+    	// Base case  
+        if (root == null)  
+            return;  
+      
+        // Increase distance between levels  
+        space += COUNT;  
+      
+        // Process right child first  
+        print2D(root.right, space);  
+      
+        // Print current node after space  
+        // count  
+        System.out.print("\n");  
+        for (int i = COUNT; i < space; i++)  
+            System.out.print(" ");  
+        System.out.print(root.data + "\n");  
+      
+        // Process left child  
+        print2D(root.left, space);  
     }
 
 }

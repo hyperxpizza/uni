@@ -1,8 +1,9 @@
 package ha8;
 
-public class Buch{
+public class Buch implements Comparable<Buch>{
 	public String title, author;
     public int yearPublished;
+    public int key = this.yearPublished;
 
 
     public Buch(){
@@ -14,4 +15,21 @@ public class Buch{
         this.author = author;
         this.yearPublished = yearPublished;
     }
+
+	@Override
+	public int compareTo(Buch o) {
+		if(this.yearPublished > o.yearPublished) {
+			return -1;
+		}
+		else if(this.yearPublished < o.yearPublished) {
+			return 1;
+		} else {
+			return 0;
+		}
+	}
+	
+	public String toString() {
+		return String.valueOf(this.yearPublished);
+	}
+	
 }

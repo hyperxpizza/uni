@@ -7,8 +7,11 @@ import org.junit.Test;
 public class Tests {
 
 	@Test
-	public void test() {
-		fail("Not yet implemented");
+	public void testOutprint() {
+		Antiquariat a = new Antiquariat();
+		
+		
+		
 	}
 
 }
