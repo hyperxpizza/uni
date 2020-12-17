@@ -17,11 +17,17 @@ public class Person implements Comparable<Person>{
     }
     
 	@Override
-	public int compareTo(Person arg0) {
-		
-		return 0;
+	public int compareTo(Person p) {
+		return this.nachname.compareTo(p.nachname);
 	}
 	
+	public String toString() {
+		return this.nachname;
+	}
+	
+	public String getKey() {
+		return this.key;
+	}
 	
 	
 	

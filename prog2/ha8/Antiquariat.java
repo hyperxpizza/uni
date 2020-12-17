@@ -7,14 +7,16 @@ public class Antiquariat {
 		boolean result = tree.insertNode(p);
 		return result;
 	}
+
+	public int countBooks() {
+		return tree.countNodes();
+	}
+	
 	
 	public void print() {
 		tree.print2D();
 	}
 	
-	public int countBooks() {
-		return tree.countNodes();
-	}
 	
 	
 }

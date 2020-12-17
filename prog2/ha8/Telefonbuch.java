@@ -6,4 +6,13 @@ public class Telefonbuch {
 	public int countEntries() {
 		return tree.countNodes();
 	}
+	
+	public boolean insertPerson(Person p) {
+		boolean result = tree.insertNode(p);
+		return result;
+	}
+	
+	public void print() {
+		tree.print2D();
+	}
 }

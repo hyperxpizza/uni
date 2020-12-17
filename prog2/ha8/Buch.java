@@ -18,10 +18,10 @@ public class Buch implements Comparable<Buch>{
 
 	@Override
 	public int compareTo(Buch o) {
-		if(this.yearPublished > o.yearPublished) {
+		if(this.yearPublished < o.yearPublished) {
 			return -1;
 		}
-		else if(this.yearPublished < o.yearPublished) {
+		else if(this.yearPublished > o.yearPublished) {
 			return 1;
 		} else {
 			return 0;

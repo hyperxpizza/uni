@@ -2,7 +2,7 @@ package ha8;
 
 public class BinTreeGen<E extends Comparable<E>> implements BinTreeGenInterface<E>  {
     public BinNodeGen<E> root = null;
-    static final int COUNT = 10;  
+    static final int COUNT = 10; 
     
     public BinTreeGen(){
         root = null;
@@ -67,13 +67,14 @@ public class BinTreeGen<E extends Comparable<E>> implements BinTreeGenInterface<
     }
 
     public boolean insertNode(E item){
-    	if(find(root, item) == item) {
-    		return false;
-    	} else {
     		BinNodeGen<E> newNode = new BinNodeGen<E>(item);
+    		if(root == null) {
+    			System.out.println("root is null");
+    		} else {
+    			System.out.println("root is not null");
+    		}
     		insertNode(root, newNode);
     		return true;
-    	}
     }
     
     public void insertNode(BinNodeGen<E> root, BinNodeGen<E> newNode) {
@@ -93,7 +94,8 @@ public class BinTreeGen<E extends Comparable<E>> implements BinTreeGenInterface<
     				insertNode(root.right, newNode);
     			}
     		}
-    	} else {
+    	}
+    	if(root == null) {
     		root = newNode;
     	}
     }
@@ -123,6 +125,6 @@ public class BinTreeGen<E extends Comparable<E>> implements BinTreeGenInterface<
         // Process left child  
         print2D(root.left, space);  
     }
-
+    
 }
 
