@@ -100,10 +100,27 @@ public class Tests {
 		a.insertBook(b3);
 		a.insertBook(b4);
 		a.insertBook(b5);
-		a.print();
-		System.out.print(a.countBooksUntil(1901));
-		
+		assertEquals(2, a.countBooksUntil(1899));
 	}
+	
+	@Test
+	public void testGetBooksUntil() {
+		Antiquariat a = new Antiquariat();
+		Buch b1 = new Buch("title1", "author1", 1800);
+		Buch b2 = new Buch("title2", "author2", 1700);
+		Buch b3 = new Buch("title3", "author3", 1900);
+		Buch b4 = new Buch("title4", "author4", 1950);
+		Buch b5 = new Buch("title5", "author5", 1945);
+		BinNodeGen<Buch> root = new BinNodeGen<Buch>(b1);
+		a.tree.root = root;
+		a.insertBook(b2);
+		a.insertBook(b3);
+		a.insertBook(b4);
+		a.insertBook(b5);
+		System.out.println(a.getAllUntil(1900));
+	}
+	
+	
 	
 	
 	

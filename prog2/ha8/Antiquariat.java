@@ -34,6 +34,22 @@ public class Antiquariat {
         else return countBooksUntil(n.left, year);
     }
 	
+    public String getAllUntil(int year) {
+        return getBooksUntil(tree.root, year);
+    }
+
+    private String getBooksUntil(BinNodeGen<Buch> n, int year) {
+        if(n == null)
+            return "";
+
+        if(n.data.yearPublished <= year) {
+            String s = n.data.toString() + "\n" + (n.left == null ? "" : tree.toString(n.left));
+            if(n.data.yearPublished == year)
+                return s;
+            return s + getBooksUntil(n.right, year);
+        }
+        else return getBooksUntil(n.left, year);
+    }
     
 	
 }

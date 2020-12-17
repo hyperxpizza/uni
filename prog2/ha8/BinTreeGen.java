@@ -26,22 +26,20 @@ public class BinTreeGen<E extends Comparable<E>> implements BinTreeGenInterface<
         return counter;
     }
 
-    public String toString(){
-        String msg = toString(root);
-        return msg;
+    @Override
+    public String toString(BinNodeGen<E> k) {
+        return treeString(k);
     }
 
-    public String toString(BinNodeGen<E> k){
-    	String msg = "";
-    	if(k != null) {
-    		msg = "(";
-    		msg = msg + toString(k.left);
-    		msg = msg + " " + k.data + " ";
-    		msg = msg + toString(k.right);
-    		msg = msg + ")";
-    	}
-    	
-    	return msg;
+    @Override
+    public String toString() {
+        return treeString(root);
+    }
+
+    private String treeString(BinNodeGen<E> n) {
+        if(n == null)
+            return "";
+        return n.data.toString() + "\n" + treeString(n.left) + treeString(n.right);
     }
 
     public BinNodeGen<E> find(E item){
