@@ -12,6 +12,12 @@ public class Telefonbuch {
 		return result;
 	}
 	
+	public Person searchPerson(String name) {
+		Person p = new Person("", name, "");
+		BinNodeGen<Person> toReturn = tree.find(p);
+		return toReturn.data;
+	}
+	
 	public void print() {
 		tree.print2D();
 	}

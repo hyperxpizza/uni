@@ -52,7 +52,7 @@ public class BinTreeGen<E extends Comparable<E>> implements BinTreeGenInterface<
 
     public BinNodeGen<E> find(BinNodeGen<E> root, E item){
         if(root != null){
-            if(root.data == item){
+            if(item.compareTo(root.data) == 0){
                 return root;
             } else {
                 if(item.compareTo(root.data) < 0){
@@ -67,12 +67,14 @@ public class BinTreeGen<E extends Comparable<E>> implements BinTreeGenInterface<
     }
 
     public boolean insertNode(E item){
-    		BinNodeGen<E> newNode = new BinNodeGen<E>(item);
-    		if(root == null) {
-    			System.out.println("root is null");
-    		} else {
-    			System.out.println("root is not null");
+    		if(item == null) {
+    			return false;
     		}
+    		
+    		if(find(root, item) != null) {
+    			return false;
+    		}
+    		BinNodeGen<E> newNode = new BinNodeGen<E>(item);
     		insertNode(root, newNode);
     		return true;
     }

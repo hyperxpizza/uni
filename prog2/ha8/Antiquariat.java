@@ -17,6 +17,23 @@ public class Antiquariat {
 		tree.print2D();
 	}
 	
+	public int countBooksUntil(int year) {
+        return countBooksUntil(tree.root, year);
+    }
+
+    private int countBooksUntil(BinNodeGen<Buch> n, int year) {
+        if(n == null)
+            return 0;
+
+        if(n.data.yearPublished <= year) {
+            int count = 1 + (n.left == null ? 0 : tree.countNodes(n.left));
+            if (n.data.yearPublished == year)
+                return count;
+            return count + countBooksUntil(n.right, year);
+        }
+        else return countBooksUntil(n.left, year);
+    }
 	
+    
 	
 }
