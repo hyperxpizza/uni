@@ -50,5 +50,12 @@ public class SinglyLinkedList<T> implements Listable<T> {
         }
     }
 
+    @Override
+    public boolean isEmpty(){
+        if (this.head == null){
+            return true;
+        }
 
+        return false;
+    }
 }
