@@ -72,4 +72,17 @@ public class SinglyLinkedList<T> implements Listable<T> {
             temp = temp.next;
         }
     }
+
+    public T get(int index){
+        if((head == null) || (index < 0) || (index >= size())){
+            return null;
+        }
+
+        Node temp = head;
+        for (int i = 0; i < index; i ++){
+            temp = temp.next;
+        }
+
+        return temp.data;
+    }
 }
