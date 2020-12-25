@@ -58,4 +58,9 @@ public class SinglyLinkedList<T> implements Listable<T> {
 
         return false;
     }
+
+    @Override
+    public void clear(){
+        this.head = null;
+    }
 }
