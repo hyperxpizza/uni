@@ -1,4 +1,4 @@
-package ha2;
+package lists;
 
 public interface Listable<T> {
     void add(T data);
