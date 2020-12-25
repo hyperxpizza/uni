@@ -63,4 +63,13 @@ public class SinglyLinkedList<T> implements Listable<T> {
     public void clear(){
         this.head = null;
     }
+
+    @Override
+    public void printAll(){
+        Node temp = head;
+        while (temp != null){
+            System.out.println(temp.data);
+            temp = temp.next;
+        }
+    }
 }
