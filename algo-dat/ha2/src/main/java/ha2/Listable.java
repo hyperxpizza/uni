@@ -8,4 +8,8 @@ public interface Listable<T> {
     void set(int index, T data);
     T get(int index);
     void remove(int index);
+    void clear();
+    int size();
+    void printAll();
+    boolean isEmpty();
 }
