@@ -98,7 +98,17 @@ public class SinglyLinkedList<T> implements Listable<T> {
             return;
         }
 
-        for(int i = 0, )
+        for(int i = 0; temp != null && i<index-1; i++){
+            temp = temp.next;
+        }
+
+        if (temp == null || temp.next == null){
+            return;
+        }
+
+        Node next = temp.next.next;
+
+        temp.next = next;
     }
 
 }
