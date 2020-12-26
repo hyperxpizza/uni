@@ -85,4 +85,20 @@ public class SinglyLinkedList<T> implements Listable<T> {
 
         return temp.data;
     }
+
+    public void remove(int index){
+        if (head == null){
+            return;
+        }
+
+        Node temp = head;
+
+        if (index == 0){
+            head = temp.next;
+            return;
+        }
+
+        for(int i = 0, )
+    }
+
 }
