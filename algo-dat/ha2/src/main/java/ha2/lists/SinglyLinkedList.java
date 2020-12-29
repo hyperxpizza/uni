@@ -19,59 +19,64 @@ public class SinglyLinkedList<T> implements Listable<T> {
         }
     }
 
-    @Override
+    
     public void add(T data){
+        Node newNode = new Node(data, null);
 
-    }
-
-    @Override
-    public add(int index, T data){
-
-    }
-
-    @Override
-    public void addFirst(T data){
-
-    }
-
-    @Override
-    public void addLast(T data){
-        Node node = new Node(data, null); 
-
-        if (this.head == null){
-            this.head = node;
+        if(head == null){
+            head = newNode;
         } else {
-            Node temp = this.head;
-            while (temp.next != null) {
-                temp = temp.next;
+            Node last = head;
+            while(last.next != null){
+                last = last.next;
             }
 
-            temp.next = node;
+            last.next = newNode;
         }
     }
 
-    @Override
-    public boolean isEmpty(){
-        if (this.head == null){
-            return true;
+    
+    public void add(int index, T data){
+        if(index > size() || index < 0){
+			throw new IndexOutOfBoundsException();
+		}
+
+        Node newNode = Node();
+        newNode.data = data;
+
+
+        if(head == null){
+            head = newNode;
+        } else if(index == 0){
+            newNode.next = head;
+            head = newNode;
+        } else if(index == size()){
+            add(data);
+        } else {
+            Node tmp = head;
+            for(int i = 1; i < index; i++){
+                tmp = tmp.next;
+            }
+
+
         }
 
-        return false;
+    
+    public void addFirst(T data){
+        add(0, data);
+    }
+
+    
+    public void addLast(T data){
+        add(size(), data);
     }
 
     @Override
-    public void clear(){
-        this.head = null;
+    public void set(int index, T data){
+        remove(index);
+		add(index, data);
     }
-
-    @Override
-    public void printAll(){
-        Node temp = head;
-        while (temp != null){
-            System.out.println(temp.data);
-            temp = temp.next;
-        }
-    }
+    
 
     public T get(int index){
         if((head == null) || (index < 0) || (index >= size())){
@@ -79,11 +84,14 @@ public class SinglyLinkedList<T> implements Listable<T> {
         }
 
         Node temp = head;
-        for (int i = 0; i < index; i ++){
+        int counter = 0;
+        while(temp != null){
+            if(count == index){
+                return temp.data;
+            }
+            counter++;
             temp = temp.next;
         }
-
-        return temp.data;
     }
 
     public void remove(int index){
@@ -111,4 +119,37 @@ public class SinglyLinkedList<T> implements Listable<T> {
         temp.next = next;
     }
 
+    public void clear(){
+        this.head = null;
+    }
+
+    public int size(){
+        int counter = 0;
+        Node tmp = head;
+        while(tmp.next != null){
+            counter++;
+            tmp = tmp.next;
+        }
+
+        return counter;
+    }
+
+    public void printAll(){
+        Node temp = head;
+        while (temp != null){
+            System.out.println(temp.data);
+            temp = temp.next;
+        }
+    }
+
+    public boolean isEmpty(){
+        if (this.head == null){
+            return true;
+        }
+
+        return false;
+    }
+
+    
+    
 }

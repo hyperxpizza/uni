@@ -13,56 +13,140 @@ public class DoublyLinkedList<T> implements Listable<T> {
 	
 	@Override
 	public void add(T data) {
-		// TODO Auto-generated method stub
+		Node newNode = new Node();
+		newNode.data = data;
+		
+		Node last = head;
+		newNode.next = null;
+
+		if(head == null) {
+			newNode.prev = null;
+			head = newNode;
+			return;
+		}
+
+		while(last.next != null){
+			last = last.next;
+		}
+
+		last.next = newNode;
+		newNode.prev = last;
 		
 	}
 
 	@Override
-	public void remove(T data) {
-		// TODO Auto-generated method stub
+	public void add(int index, T data){
+		if(index > size() || index < 0){
+			throw new IndexOutOfBoundsException();
+		}
+
+		Node newNode = new Node();
+		newNode.data = data;
+
+		if (head == null){
+			head = tail = newNode;
+		} else if(index == 0){
+			newNode.next = head;
+			newNode.prev = null;
+			head = newNode;
+		} else if (index == size()){
+			newNode.prev = tail;
+			newNode.next = null;
+			tail = newNode;
+		} else {
+			Node tmp = head;
+			for(int i = 1; i < index; i++){
+				tmp = tmp.next;
+			}
+
+			newNode.next = tmp.next;
+			tmp.next = newNode;
+			newNode.prev = tmp;
+			newNode.next.prev = newNode;
+		}
+	}
+
+	@Override
+	public void addFirst(T data){
+		add(0, data);
+	}
+	
+	@Override
+	public void addLast(T data) {
+		add(size(), data);
 		
 	}
 
 	@Override
-	public void remove(int index) {
-		// TODO Auto-generated method stub
-		
+	public void set(int index, T data){
+		remove(index);
+		add(index, data);
+	}
+	
+	@Override
+	public T get(int index){
+		if((head == null) || (index < 0) || (index >= size())){
+            return null;
+        }
+
+        Node temp = head;
+        int counter = 0;
+        while(temp != null){
+            if(count == index){
+                return temp.data;
+            }
+            counter++;
+            temp = temp.next;
+        }
+	}
+	
+	@Override
+	public void remove(int index){
+		if(head == null || index<0 || index > size()){
+			return;
+		}
+
+		Node tmp = head;
+		for(int i = 0; i < index; i++){
+			tmp = tmp.next;
+		}
+
 	}
 
 	@Override
-	public void insertAt(int index, T data) {
-		// TODO Auto-generated method stub
-		
+	public int size(){
+		int counter = 0;
+        Node tmp = head;
+        while(tmp.next != null){
+            counter++;
+            tmp = tmp.next;
+        }
+
+        return counter;
 	}
 
 	@Override
-	public void clear() {
+	public void clear(){
 		head = null;
 		tail = null;
-		// counter = 0;
 	}
 
 	@Override
-	public T get(int index) {
-		// TODO Auto-generated method stub
-		return null;
+	public void printAll(){
+		Node temp = head;
+        while (temp != null){
+            System.out.println(temp.data);
+            temp = temp.next;
+        }
 	}
 
 	@Override
-	public boolean isEmpty() {
-		return ((head == null) && (tail == null));
-	}
+	public boolean isEmpty(){
+		if(head == null && tail == null){
+			return true;
+		}
 
-	@Override
-	public int size() {
-		// TODO Auto-generated method stub
-		return 0;
+		return false;
 	}
-
-	@Override
-	public void print() {
-		// TODO Auto-generated method stub
-		
-	}
-
+	
 }
