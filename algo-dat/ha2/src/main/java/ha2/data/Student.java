@@ -1,13 +1,13 @@
 package data;
 
-public class Student implements Comparable<Student>{
+public class Student {
     private String prename;
     private String surname;
     private int course;
     private int matriculationNumber;
 
     public Student(){
-        System.out.println("[*] Running constructor without parameters");
+
     }
 
     public Student(String prename, String surname, int course, int matriculationNumber){
@@ -18,8 +18,7 @@ public class Student implements Comparable<Student>{
     }
 
     public String toString(){
-        String msg = "Prename: " + this.prename + "\n" + "Surname: " + this.surname + "\n" + "Course: " + this.course + "\n" + "Marticulationnumber: " + this.matriculationNumber + "\n";
-        return msg;
+        return "Student [prename=" + prename + ", surname=" + surname + ", course=" + course + ", matriculationNumber=" + matriculationNumber + "]";
     }
 
     public void setPrename(String prename){
@@ -54,14 +53,5 @@ public class Student implements Comparable<Student>{
         return this.matriculationNumber;
     }
 
-    @Override
-	public int compareTo(Student arg) {
-        if(getCourse() > arg.getCourse()){
-            return 1;
-        } else if (getCourse() < arg.getCourse()){
-            return -1;
-        } else {
-            return 0;
-        }
-    }
+
 }

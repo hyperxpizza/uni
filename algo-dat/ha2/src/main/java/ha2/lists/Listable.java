@@ -1,4 +1,5 @@
 package lists;
+import sort.Comparator;
 
 public interface Listable<T> {
     void add(T data);
@@ -12,4 +13,5 @@ public interface Listable<T> {
     int size();
     void printAll();
     boolean isEmpty();
+    T search(Comparator comparator, T data);
 }

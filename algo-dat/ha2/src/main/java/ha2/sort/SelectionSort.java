@@ -1,6 +1,6 @@
 package sort;
 
-import ha2.lists.Listable;
+import lists.Listable;
 
 public class SelectionSort<T> extends Swap<T> implements Sortable<T> {
 

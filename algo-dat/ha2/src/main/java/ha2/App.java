@@ -4,7 +4,14 @@
 package ha2;
 
 import data.Student;
-import ha2.sort.Sortable;
+import sort.Sortable;
+import sort.Comparator;
+import sort.BubbleSort;
+import sort.SelectionSort;
+import sort.CourseComparator;
+import sort.MatriculationNumberComparator;
+import sort.PrenameComparator;
+import sort.SurnameComparator;
 import lists.DoublyLinkedList;
 import lists.Listable;
 import lists.SinglyLinkedList;
@@ -12,19 +19,32 @@ import lists.SinglyLinkedList;
 public class App {
     public static void main(String[] args){
         // Select which list type to use
+        boolean listMenuRunning = true;
         int listType = 0;
-        while((listType != 1 ) || (listType != 2)){
+        while(listMenuRunning){
             printListMenu();
             listType = Console.readIntegerFromStdIn("Please enter a number for an option:");
+            switch(listType){
+                case 1:
+                    listMenuRunning = false;
+                    break;
+                case 2:
+                    listMenuRunning = false;
+                    break;
+                default:
+                    System.out.println("[-] Wrong input, try again");
+            }
         }
 
 
         if (listType == 1) {
-            SinglyLinkedList list = new SinglyLinkedList<Student>();
-        } else {
-            DoublyLinkedList list = new DoublyLinkedList<Student>();
+            run(new SinglyLinkedList<Student>());
+        } else if(listType == 2){
+            run(new DoublyLinkedList<Student>());
         }
+    }
 
+    private static void run(Listable<Student> list){
         // main menu
         boolean mainMenuRunning = true;
         while(mainMenuRunning == true){
@@ -67,28 +87,37 @@ public class App {
                     int searchMenuOption = 0;
                     while(searchMenuRunning == true){
                         printSearchMenu();
-                        searchMenuOption = Console.readIntegerFromStdIn("Please enter a number for an option");
+                        searchMenuOption = Console.readIntegerFromStdIn("Please enter a number for an option: ");
 
                         switch(searchMenuOption){
                             case 1:
                                 String prename = Console.readStringFromStdIn("Please enter prename for the search: ");
                                 searchMenuRunning = false;
-                                // todo: search
+                                Student s1 = new Student();
+                                s1.setPrename(prename);
+                                s1.setSurname(prename);
+                                search(list, new PrenameComparator(), s1);
                                 break;
                             case 2:
                                 String surname = Console.readStringFromStdIn("Please enter surname for the search: ");
+                                Student s2 = new Student();
+                                s2.setSurname(surname);
+                                search(list, new SurnameComparator(), s2);
                                 searchMenuRunning = false;
-                                // todo: search
                                 break;
                             case 3:
                                 int courseNumber = Console.readIntegerFromStdIn("Please enter course number for the search: ");
                                 searchMenuRunning = false;
-                                //todo: search
+                                Student s3 = new Student();
+                                s3.setCourse(courseNumber);
+                                search(list, new CourseComparator(), s3);
                                 break;
                             case 4:
                                 int matriculationNumber = Console.readIntegerFromStdIn("Please enter matriculation number for the search: ");
                                 searchMenuRunning = false;
-                                //todo: search
+                                Student s4 = new Student();
+                                s4.setMatriculationnumber(matriculationNumber);
+                                search(list, new MatriculationNumberComparator(), s4);
                                 break;
                             default:
                                 System.out.println("[-] Wrong input, please try again");
@@ -96,78 +125,107 @@ public class App {
                     }
                     break;
                 case 11:
-                /*
-                    boolean sortMenuRunning = true;
-                    while(sortMenuRunning == true){
+                    boolean sortMenuRunning1 = true;
+                    while(sortMenuRunning1 == true){
                         printSortMenu1();
-                        int sortMenuOption1 = Console.readIntegerFromStdIn("Please enter a number for an option: ");
-                        
-                        String method = "";
-                        boolean sortMenu2Running = true;
-
-                        switch(sortMenuOption1){
+                        boolean sortMenuRunning2 = true;
+                        int sortMenuRunningOption1 = Console.readIntegerFromStdIn("Please enter a number: ");
+                        switch(sortMenuRunningOption1){
                             case 1:
-                                method = "Bubblesort";
-                                boolean 
+                                sortMenuRunning1 = false;
+                                while(sortMenuRunning2){
+                                    printSortMenu2("BubbleSort");
+                                    int sortMenuRunningOption2 = Console.readIntegerFromStdIn("Please enter a number: ");
+                                    switch(sortMenuRunningOption2){
+                                        case 1:
+                                            sortMenuRunning2 = false;
+                                            sort(list, new BubbleSort<Student>(), new CourseComparator());
+                                            break;
+                                        case 2:
+                                            sortMenuRunning2 = false;
+                                            sort(list, new BubbleSort<Student>(), new MatriculationNumberComparator());
+                                            break;
+                                        default: 
+                                            System.out.println("Invalid input, please try again");
+                                        }
+                                }
+                                break;
                             case 2:
-                                method = "Selectionsort";    
-
+                                sortMenuRunning1 = false;
+                                while(sortMenuRunning2){
+                                    printSortMenu2("SelectionSort");
+                                    int sortMenuRunning3 = Console.readIntegerFromStdIn("Please enter a number: ");
+                                    switch(sortMenuRunning3){
+                                        case 1:
+                                            sortMenuRunning2 = false;
+                                            sort(list, new SelectionSort<Student>(), new CourseComparator());
+                                            break;
+                                        case 2:
+                                            sortMenuRunning2 = false;
+                                            sort(list, new SelectionSort<Student>(), new MatriculationNumberComparator());
+                                            break;
+                                        default: 
+                                            System.out.println("Invalid input, please try again");
+                                        }
+                                    }
+                                break;
+                            default:
+                                System.out.println("Invalid input, please try again");
                         }
                     }
-                    */
                     break;
                 default:
                     System.out.println("[-] Wrong input, please try again");
             }
         }
-        
     }
 
     private static void printMenu(String list){
-        System.out.println("Console-Application: Exercise-2 \t\t Wojciech Maximilian Frackowski 576278");
-        System.out.println("1. Add Student to the end of the list");
-        System.out.println("2. Inserts the Student at the specified position in this list.");
-        System.out.println("3. Inserts the Student at the beginning of this list.");
-        System.out.println("4. Appends the Student to the end of this list.");
-        System.out.println("5. Returns the Student at the specified position in this list.");
-        System.out.println("6. Print all students to console from list.");
-        System.out.println("7. Returns the number of Students in this list.");
-        System.out.println("8. Removes the Student at the specified position in this list.");
-        System.out.println("9. Removes all of the Students from this list.");
-        System.out.println("10. Search for student(s) by different characteristics.");
-        System.out.println("11. Sort list by different properties");
-        System.out.println("0. Exit");
+        System.out.println("\nConsole-Application: Exercise-2 \t\t Wojciech Maximilian Frackowski 576278");
+        System.out.println("You selected " + list + ":\n");
+        System.out.println("\t1. Add Student to the end of the list");
+        System.out.println("\t2. Inserts the Student at the specified position in this list.");
+        System.out.println("\t3. Inserts the Student at the beginning of this list.");
+        System.out.println("\t4. Appends the Student to the end of this list.");
+        System.out.println("\t5. Returns the Student at the specified position in this list.");
+        System.out.println("\t6. Print all students to console from list.");
+        System.out.println("\t7. Returns the number of Students in this list.");
+        System.out.println("\t8. Removes the Student at the specified position in this list.");
+        System.out.println("\t9. Removes all of the Students from this list.");
+        System.out.println("\t10. Search for student(s) by different characteristics.");
+        System.out.println("\t11. Sort list by different properties");
+        System.out.println("\t0. Exit");
     }
 
     private static void printSearchMenu(){
-        System.out.println("Select a property to search for the student: ");
+        System.out.println("\nSelect a property to search for the student: ");
         System.out.print("\n");
-        System.out.println("1. Search by prename?");
-        System.out.println("2. Search by surname?");
-        System.out.println("3. Search by course number?");
-        System.out.println("4. Search by matriculation numer?");
+        System.out.println("\t1. Search by prename?");
+        System.out.println("\t2. Search by surname?");
+        System.out.println("\t3. Search by course number?");
+        System.out.println("\t4. Search by matriculation numer?");
     }
 
     private static void printSortMenu1(){
-        System.out.println("Select a sorting method for sorting: ");
+        System.out.println("\nSelect a sorting method for sorting: ");
         System.out.println("");
-        System.out.println("1. Bubblesort?");
-        System.out.println("2. Selectionsort?");
+        System.out.println("\t1. Bubblesort?");
+        System.out.println("\t2. Selectionsort?");
     }
 
     private static void printSortMenu2(String method){
-        System.out.println("Please select a property for sorting with the '" + method + "' algorithm:");
+        System.out.println("\nPlease select a property for sorting with the '" + method + "' algorithm:");
         System.out.println("");
-        System.out.println("1.Sort by course?");
-        System.out.println("2.Sort by marticulation number?");
+        System.out.println("\t1.Sort by course?");
+        System.out.println("\t2.Sort by marticulation number?");
     }
 
     private static void printListMenu(){
-        System.out.println("Console-Application: Exercise-2 \t\t Wojciech Maximilian Frackowski 576278");
+        System.out.println("\nConsole-Application: Exercise-2 \t\t Wojciech Maximilian Frackowski 576278");
         System.out.println("");
         System.out.println("Select list type before starting the main menu: ");
-        System.out.println("1. SinglyLinkedList");
-        System.out.println("2. DoublyLinkedList");
+        System.out.println("\t1. SinglyLinkedList");
+        System.out.println("\t2. DoublyLinkedList");
     }
 
     private static Student createStudent(){
@@ -181,43 +239,52 @@ public class App {
         return s;
     }
 
-    private static void insertStudentAtIndex(Listable list){
+    private static void insertStudentAtIndex(Listable<Student> list){
         int index = Console.readIntegerFromStdIn("Index: ");
         Student s = createStudent();
         list.add(index, s);
     }
 
-    private static void insertStudent(Listable list){
+    private static void insertStudent(Listable<Student> list){
         Student s = createStudent();
         list.add(s);
     }
 
-    private static void insertStudentFirst(Listable list){
+    private static void insertStudentFirst(Listable<Student> list){
         Student s = createStudent();
         list.addFirst(s);
     }
 
-    private static void insertStudentLast(Listable list){
+    private static void insertStudentLast(Listable<Student> list){
         Student s = createStudent();
         list.addLast(s);
     }
 
-    private static void getStudent(Listable list){
+    private static void getStudent(Listable<Student> list){
         int index = Console.readIntegerFromStdIn("Which index: ");
         Student s = list.get(index);
         if(s == null){
-            System.out.println("wrong index");
+            System.out.println("[-] Wrong index");
         } else {
             System.out.println(s);
         }
     }
 
-    private static void removeStudentAtIndex(Listable list){
+    private static void removeStudentAtIndex(Listable<Student> list){
         int index = Console.readIntegerFromStdIn("Which index: ");
         list.remove(index);
     }
 
-    private static void sort(Listable<Student> list, Sortable<ha2.data.Student> algo, Comparator<Student> comparator){
+    private static void sort(Listable<Student> list, Sortable<Student> algo, Comparator<Student> comparator){
         algo.sort(list, comparator);
+    }
+
+    private static void search(Listable<Student> list, Comparator<Student> comparator, Student data){
+        Student s = list.search(comparator, data);
+        if(s == null){
+            System.out.println("[-] No student found");
+        } else {
+            System.out.println(s);
+        }
     }
 }

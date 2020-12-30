@@ -1,6 +1,6 @@
 package sort;
 
-import ha2.data.Student;
+import data.Student;
 
 public class SurnameComparator implements Comparator<Student> {
     @Override

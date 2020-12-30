@@ -1,6 +1,6 @@
 package sort;
 
-import ha2.lists.Listable;
+import lists.Listable;
 
 public class Swap<T> {
     protected void swap(Listable<T> list, int i, int j){

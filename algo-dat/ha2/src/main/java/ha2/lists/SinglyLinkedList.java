@@ -1,27 +1,22 @@
 package lists;
 
+import sort.Comparator;
+import data.Student;
+
 public class SinglyLinkedList<T> implements Listable<T> {
 
-    Node head = null;
+    public Node head = null;
+    public int counter = 0;
 
     private class Node {
         T data;
         Node next;
-
-        private Node(){
-            this.data = null;
-            this.next = null;
-        }
-
-        private Node(T data, Node next){
-            this.data = data;
-            this.next = next;
-        }
     }
 
     
     public void add(T data){
-        Node newNode = new Node(data, null);
+        Node newNode = new Node();
+        newNode.data = data;
 
         if(head == null){
             head = newNode;
@@ -37,33 +32,36 @@ public class SinglyLinkedList<T> implements Listable<T> {
 
     
     public void add(int index, T data){
-        if(index > size() || index < 0){
-			throw new IndexOutOfBoundsException();
-		}
-
-        Node newNode = new Node();
-        newNode.data = data;
-
-
-        if(head == null){
-            head = newNode;
-        } else if(index == 0){
-            newNode.next = head;
-            head = newNode;
-        } else if(index == size()){
-            add(data);
-        } else {
-            Node tmp = head;
-            for(int i = 1; i < index; i++){
-                tmp = tmp.next;
-            }
-
+        if(index<0){
+            throw new IndexOutOfBoundsException();
         }
 
+        if (index == 0) {
+            addFirst(data);
+        }
+
+        else {
+            Node node = new Node();
+
+            node.data = data;
+
+            Node temp = head;
+            for (int i = 0; i < index - 1; i++) {
+                temp = temp.next;
+
+            }
+
+            node.next = temp.next;
+            temp.next = node;
+        }
+        counter++;
     }
     
     public void addFirst(T data){
-        add(0, data);
+        Node newNode = new Node();
+        newNode.data = data;
+        newNode.next = head;
+        head = newNode;
     }
 
     
@@ -72,9 +70,24 @@ public class SinglyLinkedList<T> implements Listable<T> {
     }
 
     @Override
-    public void set(int index, T data){
-        remove(index);
-		add(index, data);
+    public void set(int index, T data) {
+
+    	if (index > size()) {
+            throw new IllegalArgumentException();
+        }
+        if (index < 0) {
+            throw new NullPointerException();
+        }
+        if (index <= size()) {
+            int counter = 0;
+            Node tmp = head;
+            while (counter != index) {
+                counter++;
+                tmp = tmp.next;
+            }
+            tmp.data = data;
+
+        }
     }
     
 
@@ -92,6 +105,8 @@ public class SinglyLinkedList<T> implements Listable<T> {
             counter++;
             temp = temp.next;
         }
+
+        return null;
     }
 
     public void remove(int index){
@@ -123,16 +138,22 @@ public class SinglyLinkedList<T> implements Listable<T> {
         this.head = null;
     }
 
-    public int size(){
-        int counter = 0;
+    @Override
+	public int size(){
+		if(head == null){
+			return 0;
+		}
+
+		int counter = 0;
+
         Node tmp = head;
-        while(tmp.next != null){
+        while(tmp != null){
             counter++;
             tmp = tmp.next;
         }
 
         return counter;
-    }
+	}
 
     public void printAll(){
         Node temp = head;
@@ -150,30 +171,20 @@ public class SinglyLinkedList<T> implements Listable<T> {
         return false;
     }
 
-    /*
-    public void bubbleSortByCourse() {
-        /*
-        if(size() > 1){
-            for(int i = 0; i < size(); i++){
-                Node curr = head;
-                Node next = head.next;
-                for(int j = 0; j< size() -1; j++){
-                    if
-                }
-            }
+	public T search(Comparator comparator, T data){
+		if(head == null){
+			return null;
         }
         
-    }
-    public T searchPrename(String prename){
-        if(head == null){
-            return null;
-        }
+		Node tmp = head;
+		while(tmp != null){
+			if(comparator.compare(tmp.data, data) == 0){
+				return tmp.data;
+			}
+			tmp = tmp.next;
+		}
 
-        Node tmp = head;
-        while(tmp.next != null){
-            if(tmp.data.equals
-        }
-    }
-    */
+		return null;
+	}
     
 }

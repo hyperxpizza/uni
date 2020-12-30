@@ -1,9 +1,13 @@
 package lists;
 
+import sort.Comparator;
+import data.Student;
+
 public class DoublyLinkedList<T> implements Listable<T> {
 
 	private Node head = null;
 	private Node tail = null;
+	public int counter = 0;
 	
 	private class Node {
 		T data = null;
@@ -22,6 +26,7 @@ public class DoublyLinkedList<T> implements Listable<T> {
 		if(head == null) {
 			newNode.prev = null;
 			head = newNode;
+			counter++;
 			return;
 		}
 
@@ -31,6 +36,8 @@ public class DoublyLinkedList<T> implements Listable<T> {
 
 		last.next = newNode;
 		newNode.prev = last;
+
+		counter++;
 		
 	}
 
@@ -64,6 +71,8 @@ public class DoublyLinkedList<T> implements Listable<T> {
 			newNode.prev = tmp;
 			newNode.next.prev = newNode;
 		}
+
+		counter++;
 	}
 
 	@Override
@@ -78,10 +87,25 @@ public class DoublyLinkedList<T> implements Listable<T> {
 	}
 
 	@Override
-	public void set(int index, T data){
-		remove(index);
-		add(index, data);
-	}
+    public void set(int index, T data) {
+
+    	if (index > size()) {
+            throw new IllegalArgumentException();
+        }
+        if (index < 0) {
+            throw new NullPointerException();
+        }
+        if (index <= size()) {
+            int counter = 0;
+            Node tmp = head;
+            while (counter != index) {
+                counter++;
+                tmp = tmp.next;
+            }
+            tmp.data = data;
+
+        }
+    }
 	
 	@Override
 	public T get(int index){
@@ -97,7 +121,9 @@ public class DoublyLinkedList<T> implements Listable<T> {
             }
             counter++;
             temp = temp.next;
-        }
+		}
+		
+		return null;
 	}
 	
 	@Override
@@ -108,32 +134,27 @@ public class DoublyLinkedList<T> implements Listable<T> {
 
 		Node tmp = head;
 		int i = 0;
-		while(tmp.next != null){
+		while(tmp != null){
 			if(i == index){
-
+				tmp.prev.next = tmp.next;
+				tmp.next.prev = tmp.prev;
 			}
 
 			i++;
 		}
-
+		counter --;
 	}
 
 	@Override
 	public int size(){
-		int counter = 0;
-        Node tmp = head;
-        while(tmp.next != null){
-            counter++;
-            tmp = tmp.next;
-        }
-
-        return counter;
+		return counter;
 	}
 
 	@Override
 	public void clear(){
 		head = null;
 		tail = null;
+		counter = 0;
 	}
 
 	@Override
@@ -153,5 +174,20 @@ public class DoublyLinkedList<T> implements Listable<T> {
 
 		return false;
 	}
-	
+
+	public T search(Comparator comparator, T data){
+		if(head == null){
+			return null;
+		}
+
+		Node tmp = head;
+		while(tmp != null){
+			if(comparator.compare(tmp.data, data) == 0){
+				return tmp.data;
+			}
+			tmp = tmp.next;
+		}
+
+		return null;
+	}
 }
