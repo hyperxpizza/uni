@@ -1,6 +1,9 @@
 package lists;
 
 import sort.Comparator;
+
+import java.util.List;
+import java.util.ArrayList;
 import data.Student;
 
 public class DoublyLinkedList<T> implements Listable<T> {
@@ -175,19 +178,20 @@ public class DoublyLinkedList<T> implements Listable<T> {
 		return false;
 	}
 
-	public T search(Comparator comparator, T data){
+	public List<T> search(Comparator comparator, T data){
 		if(head == null){
 			return null;
 		}
 
+		List<T> list = new ArrayList<T>();
 		Node tmp = head;
 		while(tmp != null){
 			if(comparator.compare(tmp.data, data) == 0){
-				return tmp.data;
+				list.add(tmp.data);
 			}
 			tmp = tmp.next;
 		}
 
-		return null;
+		return list;
 	}
 }

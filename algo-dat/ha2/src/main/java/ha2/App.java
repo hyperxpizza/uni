@@ -3,6 +3,8 @@
  */
 package ha2;
 
+import java.util.Arrays;
+
 import data.Student;
 import sort.Sortable;
 import sort.Comparator;
@@ -15,6 +17,7 @@ import sort.SurnameComparator;
 import lists.DoublyLinkedList;
 import lists.Listable;
 import lists.SinglyLinkedList;
+import java.util.List;
 
 public class App {
     public static void main(String[] args){
@@ -280,7 +283,7 @@ public class App {
     }
 
     private static void search(Listable<Student> list, Comparator<Student> comparator, Student data){
-        Student s = list.search(comparator, data);
+        List<Student> s = list.search(comparator, data);
         if(s == null){
             System.out.println("[-] No student found");
         } else {

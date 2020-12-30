@@ -1,4 +1,6 @@
 package lists;
+import java.util.List;
+
 import sort.Comparator;
 
 public interface Listable<T> {
@@ -13,5 +15,5 @@ public interface Listable<T> {
     int size();
     void printAll();
     boolean isEmpty();
-    T search(Comparator comparator, T data);
+    List<T> search(Comparator comparator, T data);
 }
