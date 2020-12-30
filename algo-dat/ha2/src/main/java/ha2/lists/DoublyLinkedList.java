@@ -92,7 +92,7 @@ public class DoublyLinkedList<T> implements Listable<T> {
         Node temp = head;
         int counter = 0;
         while(temp != null){
-            if(count == index){
+            if(counter == index){
                 return temp.data;
             }
             counter++;
@@ -103,12 +103,17 @@ public class DoublyLinkedList<T> implements Listable<T> {
 	@Override
 	public void remove(int index){
 		if(head == null || index<0 || index > size()){
-			return;
+			throw new IndexOutOfBoundsException();
 		}
 
 		Node tmp = head;
-		for(int i = 0; i < index; i++){
-			tmp = tmp.next;
+		int i = 0;
+		while(tmp.next != null){
+			if(i == index){
+
+			}
+
+			i++;
 		}
 
 	}

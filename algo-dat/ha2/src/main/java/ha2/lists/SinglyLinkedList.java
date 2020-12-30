@@ -41,7 +41,7 @@ public class SinglyLinkedList<T> implements Listable<T> {
 			throw new IndexOutOfBoundsException();
 		}
 
-        Node newNode = Node();
+        Node newNode = new Node();
         newNode.data = data;
 
 
@@ -58,9 +58,9 @@ public class SinglyLinkedList<T> implements Listable<T> {
                 tmp = tmp.next;
             }
 
-
         }
 
+    }
     
     public void addFirst(T data){
         add(0, data);
@@ -86,7 +86,7 @@ public class SinglyLinkedList<T> implements Listable<T> {
         Node temp = head;
         int counter = 0;
         while(temp != null){
-            if(count == index){
+            if(counter == index){
                 return temp.data;
             }
             counter++;
@@ -150,6 +150,30 @@ public class SinglyLinkedList<T> implements Listable<T> {
         return false;
     }
 
-    
+    /*
+    public void bubbleSortByCourse() {
+        /*
+        if(size() > 1){
+            for(int i = 0; i < size(); i++){
+                Node curr = head;
+                Node next = head.next;
+                for(int j = 0; j< size() -1; j++){
+                    if
+                }
+            }
+        }
+        
+    }
+    public T searchPrename(String prename){
+        if(head == null){
+            return null;
+        }
+
+        Node tmp = head;
+        while(tmp.next != null){
+            if(tmp.data.equals
+        }
+    }
+    */
     
 }

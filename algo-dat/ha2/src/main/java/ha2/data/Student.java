@@ -1,6 +1,6 @@
 package data;
 
-public class Student{
+public class Student implements Comparable<Student>{
     private String prename;
     private String surname;
     private int course;
@@ -52,5 +52,16 @@ public class Student{
 
     public int getMarticulationnumber(){
         return this.matriculationNumber;
+    }
+
+    @Override
+	public int compareTo(Student arg) {
+        if(getCourse() > arg.getCourse()){
+            return 1;
+        } else if (getCourse() < arg.getCourse()){
+            return -1;
+        } else {
+            return 0;
+        }
     }
 }

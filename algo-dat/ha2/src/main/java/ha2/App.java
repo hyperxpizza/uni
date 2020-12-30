@@ -4,6 +4,7 @@
 package ha2;
 
 import data.Student;
+import ha2.sort.Sortable;
 import lists.DoublyLinkedList;
 import lists.Listable;
 import lists.SinglyLinkedList;
@@ -17,12 +18,11 @@ public class App {
             listType = Console.readIntegerFromStdIn("Please enter a number for an option:");
         }
 
-        Listable list = new Listable<Student>();
 
         if (listType == 1) {
-            list = new SinglyLinkedList();
-        } else if (listType == 2){
-            list = new DoublyLinkedList();
+            SinglyLinkedList list = new SinglyLinkedList<Student>();
+        } else {
+            DoublyLinkedList list = new DoublyLinkedList<Student>();
         }
 
         // main menu
@@ -96,6 +96,7 @@ public class App {
                     }
                     break;
                 case 11:
+                /*
                     boolean sortMenuRunning = true;
                     while(sortMenuRunning == true){
                         printSortMenu1();
@@ -113,6 +114,7 @@ public class App {
 
                         }
                     }
+                    */
                     break;
                 default:
                     System.out.println("[-] Wrong input, please try again");
@@ -215,4 +217,7 @@ public class App {
         list.remove(index);
     }
 
+    private static void sort(Listable<Student> list, Sortable<ha2.data.Student> algo, Comparator<Student> comparator){
+        algo.sort(list, comparator);
+    }
 }
